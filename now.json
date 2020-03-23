@@ -1,7 +1,10 @@
 {
-    "functions": {
-      "api/vistas/index.php": {
-        "runtime": "now-php@0.0.7"
-      }
+  "functions": {
+    "api/vistas/index.php": {
+      "runtime": "now-php@0.0.9"
     }
-  }
+  },
+  "routes": [
+    { "src": "/(.*)",  "dest": "/api/vistas/index.php" }
+  ]
+}
