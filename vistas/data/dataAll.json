@@ -1,0 +1,135 @@
+[
+    {
+        "Country": "Peru",
+        "Date": "2020-03-06T00:00:00Z",
+        "Confirmed": 1,
+        "Recovered": 0,
+        "Deaths": 0,
+        "Descarted": 1
+    },
+    {
+        "Country": "Peru",
+        "Date": "2020-03-07T00:00:00Z",
+        "Confirmed": 6,
+        "Recovered": 0,
+        "Deaths": 0,
+        "Descarted": 213
+    },
+    {
+        "Country": "Peru",
+        "Date": "2020-03-08T00:00:00Z",
+        "Confirmed": 7,
+        "Recovered": 0,
+        "Deaths": 0,
+        "Descarted": 270
+    },
+    {
+        "Country": "Peru",
+        "Date": "2020-03-09T00:00:00Z",
+        "Confirmed": 9,
+        "Recovered": 0,
+        "Deaths": 0,
+        "Descarted": 309
+    },
+    {
+        "Country": "Peru",
+        "Date": "2020-03-10T00:00:00Z",
+        "Confirmed": 11,
+        "Recovered": 0,
+        "Deaths": 0,
+        "Descarted": 335
+    },
+    {
+        "Country": "Peru",
+        "Date": "2020-03-11T00:00:00Z",
+        "Confirmed": 17,
+        "Recovered": 0,
+        "Deaths": 0,
+        "Descarted": 697
+    },
+    {
+        "Country": "Peru",
+        "Date": "2020-03-12T00:00:00Z",
+        "Confirmed": 22,
+        "Recovered": 0,
+        "Deaths": 0,
+        "Descarted": 883
+    },
+    {
+        "Country": "Peru",
+        "Date": "2020-03-13T00:00:00Z",
+        "Confirmed": 38,
+        "Recovered": 0,
+        "Deaths": 0,
+        "Descarted": 1194
+    },
+    {
+        "Country": "Peru",
+        "Date": "2020-03-14T00:00:00Z",
+        "Confirmed": 43,
+        "Recovered": 0,
+        "Deaths": 0,
+        "Descarted": 1502
+    },
+    {
+        "Country": "Peru",
+        "Date": "2020-03-15T00:00:00Z",
+        "Confirmed": 71,
+        "Recovered": 0,
+        "Deaths": 0,
+        "Descarted": 1751
+    },
+    {
+        "Country": "Peru",
+        "Date": "2020-03-16T00:00:00Z",
+        "Confirmed": 86,
+        "Recovered": 1,
+        "Deaths": 0,
+        "Descarted": 2229
+    },
+    {
+        "Country": "Peru",
+        "Date": "2020-03-17T00:00:00Z",
+        "Confirmed": 117,
+        "Recovered": 1,
+        "Deaths": 0,
+        "Descarted": 2680
+    },
+    {
+        "Country": "Peru",
+        "Date": "2020-03-18T00:00:00Z",
+        "Confirmed": 145,
+        "Recovered": 1,
+        "Deaths": 0,
+        "Descarted": 2930
+    },
+    {
+        "Country": "Peru",
+        "Date": "2020-03-19T00:00:00Z",
+        "Confirmed": 234,
+        "Recovered": 1,
+        "Deaths": 3,
+        "Descarted": 3607
+    },{
+        "Country": "Peru",
+        "Date": "2020-03-20T00:00:00Z",
+        "Confirmed": 263,
+        "Recovered": 1,
+        "Deaths": 4,
+        "Descarted": 4035
+    },{
+        "Country": "Peru",
+        "Date": "2020-03-21T00:00:00Z",
+        "Confirmed": 318,
+        "Recovered": 1,
+        "Deaths": 5,
+        "Descarted": 5573
+    },{
+        "Country": "Peru",
+        "Date": "2020-03-22T00:00:00Z",
+        "Confirmed": 363,
+        "Recovered": 1,
+        "Deaths": 5,
+        "Descarted": 5821
+    }
+]
