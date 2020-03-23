@@ -3,8 +3,5 @@
     "api/vistas/*.php": {
       "runtime": "now-php@0.0.9"
     }
-  },
-  "routes": [
-    { "src": "/(.*)",  "dest": "/api/vistas/index.php" }
-  ]
+  }
 }
