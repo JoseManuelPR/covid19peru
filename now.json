@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/vistas/index.php": {
+    "api/vistas/*.php": {
       "runtime": "now-php@0.0.9"
     }
   },
