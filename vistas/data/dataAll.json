@@ -138,5 +138,12 @@
         "Recovered": 1,
         "Deaths": 5,
         "Descarted": 6269
+    },{
+        "Country": "Peru",
+        "Date": "2020-03-24T00:00:00Z",
+        "Confirmed": 416,
+        "Recovered": 1,
+        "Deaths": 7,
+        "Descarted": 6597
     }
 ]
