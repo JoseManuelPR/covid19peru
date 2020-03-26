@@ -89,12 +89,18 @@
                             <div class="navbar-header">
                                 <div class="logo-sm">
                                     <a id="sidebar-toggle-button"><i class="icon-reorder"></i></a>
-                                    <a class="logo-box" href="dashboard.html"><span>Coronavirus</span></a>
+                                    <a class="logo-box" href="dashboard.html"><span>COVID-19 en PERÚ</span></a>
                                 </div>
+                            </div>
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <h4 style="color: white" id="demo"></h4>
+                                </ul>
                             </div>
                         </div><!-- /.container-fluid -->
                     </nav>
                 </div>
+                
                 <!-- /Page Header -->  
 
                 <!-- Page Inner -->
@@ -203,7 +209,7 @@
                         <br>
                         <small style="color:#fff"> Toda información corresponde con datos oficiales brindados por el MINSA durante conferencias de prensa y de sus comunicados en redes sociales.</small>
                         <br>
-                        <h6 style="color:#fff"> <b>Última actualización: Mar 26 2020 12:21 PM</b></h6>
+                        <h6 style="color:#fff"> <b>Última actualización: Mar 26 2020 1:13 PM</b></h6>
                         <p style="color:#fff"> <b>Desarrollado por: José Manuel Puicón Rodas</b></p>
                         <br>
                     </div> 
@@ -238,6 +244,36 @@
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'UA-161714587-1');
+        </script>
+
+        <script>
+            // Set the date we're counting down to
+            var countDownDate = new Date("Apr 13, 2020 00:00:00").getTime();
+            
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+            
+            // Get today's date and time
+            var now = new Date().getTime();
+            
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+            
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Display the result in the element with id="demo"
+            document.getElementById("demo").innerHTML = `Restante de cuarentena: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "EXPIRED";
+            }
+            }, 1000);
         </script>
 
     </body>
