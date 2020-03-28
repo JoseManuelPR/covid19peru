@@ -135,14 +135,14 @@
         "Country": "Peru",
         "Date": "2020-03-23T00:00:00Z",
         "Confirmed": 395,
-        "Recovered": 1,
+        "Recovered": 2,
         "Deaths": 5,
         "Descarted": 6269
     },{
         "Country": "Peru",
         "Date": "2020-03-24T00:00:00Z",
         "Confirmed": 416,
-        "Recovered": 1,
+        "Recovered": 4,
         "Deaths": 7,
         "Descarted": 6597
     },{
@@ -163,7 +163,7 @@
         "Country": "Peru",
         "Date": "2020-03-27T00:00:00Z",
         "Confirmed": 635,
-        "Recovered": 14,
+        "Recovered": 16,
         "Deaths": 11,
         "Descarted": 9430
     },{
