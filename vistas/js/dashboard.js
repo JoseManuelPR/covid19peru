@@ -436,7 +436,7 @@ function initMap() {
     // Create the map.
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 5,
-        center: {lat: -9.1899672, lng: -75.015152},
+        center: {lat: -10.1899672, lng: -75.015152},
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         disableDefaultUI: true,
         styles: [
