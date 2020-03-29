@@ -111,7 +111,7 @@ const loadAllHistoricDataByRegion = async (region) => {
                 for (strDate in resAllDataRegions[0].Provinces.LAMBAYEQUE)
                 {
                     days.push(strDate);
-                    confirmed.push(resAllDataRegions[0].Provinces.LAMBAYEQUE[strDate])
+                    confirmed.push(resAllDataRegions[0].Provinces.LAMBAYEQUE[strDate].Confirmed)
                 }
                 break;
             case 'LIMA':          

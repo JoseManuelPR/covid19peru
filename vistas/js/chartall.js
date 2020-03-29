@@ -375,7 +375,7 @@ const loadAllRegionsData = async () => {
                 case 'LAMBAYEQUE':          
                     for (strDate in resAllDataRegions[0].Provinces.LAMBAYEQUE)
                     {
-                        confirmedByLambayeque = resAllDataRegions[0].Provinces.LAMBAYEQUE[strDate]
+                        confirmedByLambayeque = resAllDataRegions[0].Provinces.LAMBAYEQUE[strDate].Confirmed
                     }
                     break;
                 case 'LIMA':          

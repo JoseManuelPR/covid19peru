@@ -18,7 +18,7 @@ const loadAllHistoricDataLambayeque = async () => {
         for (strDate in resAllDataLambayeque[0].Provinces.LAMBAYEQUE)
         {
             days.push(strDate);
-            confirmed.push(resAllDataLambayeque[0].Provinces.LAMBAYEQUE[strDate])
+            confirmed.push(resAllDataLambayeque[0].Provinces.LAMBAYEQUE[strDate].Confirmed)
         }
 
         let ctx = document.getElementById("chart2");
@@ -82,6 +82,67 @@ const loadAllHistoricDataLambayeque = async () => {
 }
 
 loadAllHistoricDataLambayeque();
+
+
+const dataDashboard = async () => {
+    //PERU
+    const BASE_API = './data/dataByRegion.json'
+
+    const getData = async (url) => {
+        const response = await fetch(url)
+        const resAllDataLambayeque = await response.json()
+        
+        let valueConfirmed = 0
+        let valueRecovered = 0
+        let valueDeaths = 0
+        let valueDescarted = 0
+        let valueActives = 0
+        
+        for (strDate in resAllDataLambayeque[0].Provinces.LAMBAYEQUE)
+        {
+            valueConfirmed = resAllDataLambayeque[0].Provinces.LAMBAYEQUE[strDate].Confirmed
+            valueRecovered = resAllDataLambayeque[0].Provinces.LAMBAYEQUE[strDate].Recovered
+            valueDeaths = resAllDataLambayeque[0].Provinces.LAMBAYEQUE[strDate].Deaths
+            valueDescarted = resAllDataLambayeque[0].Provinces.LAMBAYEQUE[strDate].Descarted
+            valueActives = valueConfirmed - valueRecovered - valueDeaths
+        }
+
+        const dataFiltered = {  valueConfirmed, 
+                                valueRecovered, 
+                                valueDeaths, 
+                                valueActives, 
+                                valueDescarted
+                            }
+
+        return dataFiltered
+        throw new Error('No se encontró ningun resultado');
+    }
+
+    try {
+        const   {     
+                    valueConfirmed, 
+                    valueRecovered, 
+                    valueDeaths, 
+                    valueActives, 
+                    valueDescarted
+                } = await getData(`${BASE_API}`)
+
+        const valueProvesRealized = valueDescarted + valueConfirmed
+
+        document.getElementById("nroConfirmed").textContent = valueConfirmed
+        document.getElementById("nroDeaths").textContent = valueDeaths
+        document.getElementById("nroRecovered").textContent = valueRecovered
+        document.getElementById("nroActives").textContent = valueActives
+        document.getElementById("nroDescarted").textContent = valueDescarted
+        document.getElementById("nroProves").textContent = valueProvesRealized
+
+    } catch (error) {
+        alert(error.message)
+    }
+}
+
+dataDashboard();
+
 
 $(document).ready(function() {
     
