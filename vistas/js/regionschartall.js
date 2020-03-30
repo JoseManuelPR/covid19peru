@@ -277,6 +277,7 @@ const createGraph = (region, days, confirmed) => {
             scales: {
                 yAxes: [{
                     ticks: {
+                        fontColor: "white",
                         min: 0, // it is for ignoring negative step.
                         beginAtZero: true,
                         callback: function(value, index, values) {
@@ -285,7 +286,18 @@ const createGraph = (region, days, confirmed) => {
                             }
                         }
                     }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: "white",
+                        beginAtZero: true,
+                    }
                 }]
+            },
+            legend: {
+                labels: {
+                    fontColor: 'white'
+                }
             }
         }
     });

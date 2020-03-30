@@ -105,17 +105,18 @@ const calculateCurveProjected = async () => {
                         ctx.fillStyle = "#ffffff";
                 
                         this.data.datasets.forEach(function(dataset, i) {
-                            var meta = chartInstance.controller.getDatasetMeta(i);
-                            meta.data.forEach(function(bar, index) {
-                                var data = dataset.data[index];
-                                ctx.fillText(data, bar._model.x, bar._model.y - 5);
-                            });
+                        var meta = chartInstance.controller.getDatasetMeta(i);
+                        meta.data.forEach(function(bar, index) {
+                            var data = dataset.data[index];
+                            ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                        });
                         });
                     }
                 },
                 scales: {
                     yAxes: [{
                         ticks: {
+                            fontColor: "white",
                             min: 0, // it is for ignoring negative step.
                             beginAtZero: true,
                             callback: function(value, index, values) {
@@ -124,7 +125,18 @@ const calculateCurveProjected = async () => {
                                 }
                             }
                         }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontColor: "white",
+                            beginAtZero: true,
+                        }
                     }]
+                },
+                legend: {
+                    labels: {
+                        fontColor: 'white'
+                    }
                 }
             }
         });
@@ -215,17 +227,18 @@ const loadAllHistoricDataPeru = async () => {
                         ctx.fillStyle = "#ffffff";
                 
                         this.data.datasets.forEach(function(dataset, i) {
-                            var meta = chartInstance.controller.getDatasetMeta(i);
-                            meta.data.forEach(function(bar, index) {
-                                var data = dataset.data[index];
-                                ctx.fillText(data, bar._model.x, bar._model.y - 5);
-                            });
+                        var meta = chartInstance.controller.getDatasetMeta(i);
+                        meta.data.forEach(function(bar, index) {
+                            var data = dataset.data[index];
+                            ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                        });
                         });
                     }
                 },
                 scales: {
                     yAxes: [{
                         ticks: {
+                            fontColor: "white",
                             min: 0, // it is for ignoring negative step.
                             beginAtZero: true,
                             callback: function(value, index, values) {
@@ -234,7 +247,18 @@ const loadAllHistoricDataPeru = async () => {
                                 }
                             }
                         }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontColor: "white",
+                            beginAtZero: true,
+                        }
                     }]
+                },
+                legend: {
+                    labels: {
+                        fontColor: 'white'
+                    }
                 }
             }
         });
@@ -577,6 +601,7 @@ const loadAllRegionsData = async () => {
                 scales: {
                     yAxes: [{
                         ticks: {
+                            fontColor: "white",
                             min: 0, // it is for ignoring negative step.
                             beginAtZero: true,
                             callback: function(value, index, values) {
@@ -585,7 +610,18 @@ const loadAllRegionsData = async () => {
                                 }
                             }
                         }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontColor: "white",
+                            beginAtZero: true,
+                        }
                     }]
+                },
+                legend: {
+                    labels: {
+                        fontColor: 'white'
+                    }
                 }
             }
         });

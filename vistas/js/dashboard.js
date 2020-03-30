@@ -243,7 +243,7 @@ const getCities = async () => {
                 case 'LAMBAYEQUE':          
                     for (strDate in resAllDataRegions[0].Provinces.LAMBAYEQUE)
                     {
-                        confirmedByLambayeque = resAllDataRegions[0].Provinces.LAMBAYEQUE[strDate]
+                        confirmedByLambayeque = resAllDataRegions[0].Provinces.LAMBAYEQUE[strDate].Confirmed
                     }
                     break;
                 case 'LIMA':          
@@ -523,6 +523,8 @@ function initMap() {
 
     for (var city in citymap) {
         if(citymap[city].population > 0){
+            const cityCases = citymap[city].population
+            
             const cityname = city;
 
             let cityCircle = new google.maps.Circle({
@@ -538,7 +540,7 @@ function initMap() {
     
             cityCircle.addListener('click', function(ev){
                 infowindow.close();
-                infowindow.setContent(`<div id="infowindow">${cityname.toUpperCase()}</div>`);
+                infowindow.setContent(`<div id="infowindow">${cityname.toUpperCase()}<br>Casos Confirmados: ${cityCases}</div>`);
                 infowindow.setPosition(cityCircle.getCenter());
                 infowindow.open(map, this);
             });

@@ -62,6 +62,7 @@ const loadAllHistoricDataLambayeque = async () => {
                 scales: {
                     yAxes: [{
                         ticks: {
+                            fontColor: "white",
                             min: 0, // it is for ignoring negative step.
                             beginAtZero: true,
                             callback: function(value, index, values) {
@@ -70,7 +71,18 @@ const loadAllHistoricDataLambayeque = async () => {
                                 }
                             }
                         }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontColor: "white",
+                            beginAtZero: true,
+                        }
                     }]
+                },
+                legend: {
+                    labels: {
+                        fontColor: 'white'
+                    }
                 }
             }
         });
@@ -97,6 +109,7 @@ const dataDashboard = async () => {
         let valueDeaths = 0
         let valueDescarted = 0
         let valueActives = 0
+        let aditionalData = ''
         
         for (strDate in resAllDataLambayeque[0].Provinces.LAMBAYEQUE)
         {
@@ -104,6 +117,7 @@ const dataDashboard = async () => {
             valueRecovered = resAllDataLambayeque[0].Provinces.LAMBAYEQUE[strDate].Recovered
             valueDeaths = resAllDataLambayeque[0].Provinces.LAMBAYEQUE[strDate].Deaths
             valueDescarted = resAllDataLambayeque[0].Provinces.LAMBAYEQUE[strDate].Descarted
+            aditionalData = resAllDataLambayeque[0].Provinces.LAMBAYEQUE[strDate].AditionalData
             valueActives = valueConfirmed - valueRecovered - valueDeaths
         }
 
@@ -111,7 +125,8 @@ const dataDashboard = async () => {
                                 valueRecovered, 
                                 valueDeaths, 
                                 valueActives, 
-                                valueDescarted
+                                valueDescarted,
+                                aditionalData
                             }
 
         return dataFiltered
@@ -124,7 +139,8 @@ const dataDashboard = async () => {
                     valueRecovered, 
                     valueDeaths, 
                     valueActives, 
-                    valueDescarted
+                    valueDescarted,
+                    aditionalData
                 } = await getData(`${BASE_API}`)
 
         const valueProvesRealized = valueDescarted + valueConfirmed
@@ -135,6 +151,7 @@ const dataDashboard = async () => {
         document.getElementById("nroActives").textContent = valueActives
         document.getElementById("nroDescarted").textContent = valueDescarted
         document.getElementById("nroProves").textContent = valueProvesRealized
+        document.getElementById("aditionalData").textContent = aditionalData
 
     } catch (error) {
         alert(error.message)
