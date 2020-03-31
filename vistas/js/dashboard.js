@@ -363,11 +363,11 @@ const getCities = async () => {
                 population: confirmedByIca,
             },
             junin: {
-                center: {lat: -11.6663839, lng: -76.0585717},
+                center: {lat: -12.069156, lng: -75.208648},
                 population: confirmedByJunin,
             },
             lalibertad: {
-                center: {lat: -8.1167542, lng: -79.0543563},
+                center: {lat: -8.1159897, lng: -79.0299835},
                 population: confirmedByLaLibertad,
             },
             lambayeque: {
@@ -391,7 +391,7 @@ const getCities = async () => {
                 population: confirmedByMoquegua,
             },
             pasco: {
-                center: {lat: -10.2988063, lng: -76.5525364},
+                center: {lat: -10.683354, lng: -76.256148},
                 population: confirmedByPasco,
             },
             piura: {
