@@ -504,6 +504,13 @@
                     "Deaths": 2,
                     "Descarted": 301,
                     "AditionalData": "Chiclayo: 9  /  José Leonardo Ortiz: 4  /  La Victoria: 1  /  Pimentel: 1  /  Pueblo Nuevo: 3  /  Ferreñafe: 6  /  Reque: 4  /  Santa Rosa: 1"
+                },
+                "31-03-2020": {
+                    "Confirmed": 30,
+                    "Recovered": 0,
+                    "Deaths": 3,
+                    "Descarted": 301,
+                    "AditionalData": "Chiclayo: 8  /  José Leonardo Ortiz: 4  /  La Victoria: 1  /  Pimentel: 1  /  Pueblo Nuevo: 3  /  Ferreñafe: 6  /  Reque: 4  /  Santa Rosa: 1  /  Lambayeque: 1  /  Ciudad Eten: 1"
                 }
             },
             "LIMA": {
