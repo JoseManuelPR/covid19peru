@@ -42,7 +42,7 @@
             }
         </style>
     </head>
-    <body>
+    <body >
         <!-- Page Container -->
         <div class="page-container">
             <!-- Page Sidebar -->
@@ -116,85 +116,18 @@
                 <!-- Page Inner -->
                 <div class="page-inner">
                     <div class="page-title">
-                        <h3 class="breadcrumb-header">Reporte de Lambayeque</h3>
+                        <h3 class="breadcrumb-header">Comparativo de Perú en Sudamérica</h3>
                     </div>
                     <div id="main-wrapper">
                     <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-white stats-widget">
-                                <div class="panel-body">
-                                    <div class="pull-left">
-                                        <span id="nroConfirmed" style="color: #EC5E69" class="stats-number">0</span>
-                                        <p style="color: #EC5E69" class="stats-info">Confirmados</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-white stats-widget">
-                                <div class="panel-body">
-                                    <div class="pull-left">
-                                        <span id="nroDeaths" class="stats-number">0</span>
-                                        <p tyle="color: gray" class="stats-info">Fallecidos</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-white stats-widget">
-                                <div class="panel-body">
-                                    <div class="pull-left">
-                                        <span id="nroRecovered" style="color:rgb(99, 203, 137)" class="stats-number">0</span>
-                                        <p style="color:rgb(99, 203, 137)" class="stats-info">Recuperados</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-white stats-widget">
-                                <div class="panel-body">
-                                    <div class="pull-left">
-                                        <span id="nroActives" style="color: #ffd700" class="stats-number">0</span>
-                                        <p style="color: #ffd700" class="stats-info">Activos</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="panel panel-white stats-widget">
-                                <div class="panel-body">
-                                    <div class="pull-left">
-                                        <span id="nroDescarted" style="color:rgb(99, 203, 137)" class="stats-number">0</span>
-                                        <p style="color:rgb(99, 203, 137)" class="stats-info">Pruebas Descartadas</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="panel panel-white stats-widget">
-                                <div class="panel-body">
-                                    <div class="pull-left">
-                                        <span id="nroProves" class="stats-number">0</span>
-                                        <p tyle="color: gray" class="stats-info">Pruebas Procesadas</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12">
-                            <div class="panel panel-white stats-widget">
-                                <div class="panel-body">
-                                    <p id="aditionalData" class="stats-info"></p>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-md-12">
                             <div class="panel panel-white">
                                 <div class="panel-body">
                                     <div class="panel-heading clearfix">
-                                        <h4 class="panel-title">Cantidad de Confirmados Por Día - Lambayeque</h4>
-                                        <h4 class="panel-title">Fuente: Datos Diarios Públicos del Ministerio de Salud </h4>
+                                        <h4 class="panel-title">Curva de Sudamerica (Últimos 10 día)</h4>
+                                        <h4 class="panel-title">Fuente: Data Repository by Center for Systems Science and Engineering (CSSE) at Johns Hopkins University</h4>
                                     </div>
-                                    <canvas id="chart2"></canvas>
+                                    <canvas id="chart1"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -232,7 +165,7 @@
         <script src="../assets/plugins/chartjs/chart.min.js"></script>
         <script src="../assets/js/space.min.js"></script>
         
-        <script src="./js/lambayequeschartall.js"></script>
+        <script src="./js/countriesperuchart.js"></script>
         <script src="../assets/plugins/chartjs/chart.min.js"></script>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->

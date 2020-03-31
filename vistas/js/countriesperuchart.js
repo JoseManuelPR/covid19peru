@@ -1,190 +1,83 @@
+const calculateCurveByCountries = async () => {
 
-const calculateCurveProjected = async () => {
-
-    const BASE_API = './data/dataAll.json'
-
-    const getData = async (url) => {
+    const getData = async (country) => {
+        const url = `https://api.covid19api.com/total/country/${country}/status/confirmed`
         const response = await fetch(url)
         const data = await response.json()
         return data
         throw new Error('No se encontró ningun resultado');
     } 
 
-    const getDate = (date) => {        
+    const filterByDate = (data) => {
+        let date = data.Date
         let current_datetime = new Date(date)
-        let formatted_date = (current_datetime.getDate() + 1) + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear()
-        return formatted_date
-    }
-    
-    try {
-        const resAllData = await getData(`${BASE_API}`)
-
-        let days = [
-                    "6-3-2020", 
-                    "7-3-2020", 
-                    "8-3-2020", 
-                    "9-3-2020",
-                    "10-3-2020",
-                    "11-3-2020",
-                    "12-3-2020",
-                    "13-3-2020",
-                    "14-3-2020",
-                    "15-3-2020",
-                    "16-3-2020",
-                    "17-3-2020",
-                    "18-3-2020",
-                    "19-3-2020",
-                    "20-3-2020",
-                    "21-3-2020",
-                    "22-3-2020",
-                    "23-3-2020",
-                    "24-3-2020",
-                    "25-3-2020",
-                    "26-3-2020",
-                    "27-3-2020",
-                    "28-3-2020",
-                    "29-3-2020",
-                    "30-3-2020",
-                    "31-3-2020"
-                ];
-
-        let confirmed = [];
-        const curveExponential = [4,5,7,10,13,18,25,34,47,64,88,120,165,225,308,422,577,790,1080,1478,2022];
-        const curvePotencial = [1,6,3,3,8,16,28,44,64,88,116,148,184,223,267,314,366,421,480,543,610,681,756,835,918,1005];
-        const curveTrending = [1,6,16,20,21,22,26,36,52,77,109,148,191,235,278,317,349,374,391,400,404,406,407,411,420,437];
-        
-        for (let i = 0; i < resAllData.length; i++) {
-            confirmed.push(parseInt(resAllData[i].Confirmed));
+        var initialDate = new Date();
+        initialDate.setDate(initialDate.getDate() - 10);
+        // let initialDate = new Date('2020-03-06T00:00:00Z')
+        if(current_datetime >= initialDate){
+            let formatted_date = (current_datetime.getDate() + 1) + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear()
+            data.Date = formatted_date
+            return data
+        }else{
+            return false
         }
-        
-        let ctx = document.getElementById("chart4");
-        new Chart(ctx,
-        {
-            "type":"line",
-            "data":{
-                "labels": days,
-                "datasets":[{
-                    "label":"Curva Actual en Perú",
-                    "data":confirmed,
-                    "fill":false,
-                    "borderColor":"blue",
-                    "lineTension":0
-                },{
-                    "label":"Curva Exponencial (Alta Exposición)",
-                    "data":curveExponential,
-                    "fill":false,
-                    "borderColor":"red",
-                    "lineTension":0
-                },{
-                    "label":"Curva Potencial (Baja Exposición)",
-                    "data":curvePotencial,
-                    "fill":false,
-                    "borderColor":"orange",
-                    "lineTension":0
-                },{
-                    "label":"Curva Tendencia (¡Quédate en tu casa!)",
-                    "data":curveTrending,
-                    "fill":false,
-                    "borderColor":"green",
-                    "lineTension":0
-                }]
-            },
-            "options":{
-                hover: {
-                    "animationDuration": 0
-                },
-                animation: {
-                    "duration": 1,
-                    "onComplete": function() {
-                        var chartInstance = this.chart,
-                        ctx = chartInstance.ctx;
-                
-                        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
-                        ctx.textAlign = 'center';
-                        ctx.textBaseline = 'bottom';
-                        ctx.fillStyle = "#ffffff";
-                
-                        this.data.datasets.forEach(function(dataset, i) {
-                        var meta = chartInstance.controller.getDatasetMeta(i);
-                        meta.data.forEach(function(bar, index) {
-                            var data = dataset.data[index];
-                            ctx.fillText(data, bar._model.x, bar._model.y - 5);
-                        });
-                        });
-                    }
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            fontColor: "white",
-                            min: 0, // it is for ignoring negative step.
-                            beginAtZero: true,
-                            callback: function(value, index, values) {
-                                if (Math.floor(value) === value) {
-                                    return value;
-                                }
-                            }
-                        }
-                    }],
-                    xAxes: [{
-                        ticks: {
-                            fontColor: "white",
-                            beginAtZero: true,
-                        }
-                    }]
-                },
-                legend: {
-                    labels: {
-                        fontColor: 'white'
-                    }
-                }
-            }
-        });
-
-    } catch (error) {
-        alert(error.message)
-    }
-    
-}
-
-calculateCurveProjected();
-
-const loadAllHistoricDataPeru = async () => {
-
-    //PERU
-    const BASE_API = './data/dataAll.json'
-
-    //BRASIL
-    // const BASE_API = 'https://api.covid19api.com/total/dayone/country/brazil/status/confirmed'
-    
-    const getData = async (url) => {
-        const response = await fetch(url)
-        const data = await response.json()
-        return data
-        throw new Error('No se encontró ningun resultado');
-    } 
-
-    const getDate = (date) => {        
-        let current_datetime = new Date(date)
-        let formatted_date = (current_datetime.getDate() + 1) + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear()
-        return formatted_date
     }
     
     try {
-        const resAllData = await getData(`${BASE_API}`)
+        const resDataPeru = await getData(`peru`)
+        const resDataColombia = await getData(`colombia`)
+        const resDataArgentina = await getData(`argentina`)
+        const resDataChile = await getData(`chile`)
+        const resDataBrazil = await getData(`brazil`)
+        const resDataEcuador = await getData(`ecuador`)
 
-        let days = [];
-        let confirmed = [];
-        let recovered = [];
-        let deaths = [];
-        let actives = [];
-        
-        for (let i = 0; i < resAllData.length; i++) {
-            days.push(getDate(resAllData[i].Date));
-            confirmed.push(parseInt(resAllData[i].Confirmed));
-            recovered.push(parseInt(resAllData[i].Recovered));
-            deaths.push(parseInt(resAllData[i].Deaths));
-            actives.push(parseInt(resAllData[i].Confirmed) - parseInt(resAllData[i].Recovered) - parseInt(resAllData[i].Deaths));
+        let confirmedPeru = [];
+        let confirmedColombia = [];
+        let confirmedArgentina = [];
+        let confirmedBrasil = [];
+        let confirmedChile = [];
+        let confirmedEcuador = [];
+
+        let daysPeru = [];
+
+        const resDataPeruFiltered = resDataPeru.filter(data => {
+            const res = filterByDate(data)
+            if (res) {return res}
+        })
+
+        const resDataColombiaFiltered = resDataColombia.filter(data => {
+            const res = filterByDate(data)
+            if (res) {return res}
+        })
+
+        const resDataArgentinaFiltered = resDataArgentina.filter(data => {
+            const res = filterByDate(data)
+            if (res) {return res}
+        })
+
+        const resDataChileFiltered = resDataChile.filter(data => {
+            const res = filterByDate(data)
+            if (res) {return res}
+        })
+
+        const resDataBrasilFiltered = resDataBrazil.filter(data => {
+            const res = filterByDate(data)
+            if (res) {return res}
+        })
+
+        const resDataEcuadorFiltered = resDataEcuador.filter(data => {
+            const res = filterByDate(data)
+            if (res) {return res}
+        })
+
+        for (let i = 0; i < resDataPeruFiltered.length; i++) {
+            daysPeru.push(resDataPeruFiltered[i].Date);
+            confirmedPeru.push(parseInt(resDataPeruFiltered[i].Cases));
+            confirmedColombia.push(parseInt(resDataColombiaFiltered[i].Cases));
+            confirmedArgentina.push(parseInt(resDataArgentinaFiltered[i].Cases));
+            confirmedChile.push(parseInt(resDataChileFiltered[i].Cases));
+            confirmedBrasil.push(parseInt(resDataBrasilFiltered[i].Cases));
+            confirmedEcuador.push(parseInt(resDataEcuadorFiltered[i].Cases));
         }
         
         let ctx = document.getElementById("chart1");
@@ -192,90 +85,42 @@ const loadAllHistoricDataPeru = async () => {
         {
             "type":"line",
             "data":{
-                "labels": days,
+                "labels": daysPeru,
                 "datasets":[{
-                    "label":"Cantidad de Confirmados Por Día",
-                    "data":confirmed,
+                    "label":"Perú",
+                    "data":confirmedPeru,
                     "fill":false,
                     "borderColor":"red",
                     "lineTension":0
                 },{
-                    "label":"Cantidad de Recuperados Por Día",
-                    "data":recovered,
+                    "label":"Colombia",
+                    "data":confirmedColombia,
                     "fill":false,
-                    "borderColor":"rgb(99, 203, 137)",
+                    "borderColor":"yellow",
                     "lineTension":0
                 },{
-                    "label":"Cantidad de Muertos Por Día",
-                    "data":deaths,
+                    "label":"Argentina",
+                    "data":confirmedArgentina,
                     "fill":false,
-                    "borderColor":"gray",
+                    "borderColor":"blue",
                     "lineTension":0
-                },]
-            },
-            "options":{
-                hover: {
-                    "animationDuration": 0
-                },
-                animation: {
-                    "duration": 1,
-                    "onComplete": function() {
-                        var chartInstance = this.chart,
-                        ctx = chartInstance.ctx;
-                
-                        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
-                        ctx.textAlign = 'center';
-                        ctx.textBaseline = 'bottom';
-                        ctx.fillStyle = "#ffffff";
-                
-                        this.data.datasets.forEach(function(dataset, i) {
-                        var meta = chartInstance.controller.getDatasetMeta(i);
-                        meta.data.forEach(function(bar, index) {
-                            var data = dataset.data[index];
-                            ctx.fillText(data, bar._model.x, bar._model.y - 5);
-                        });
-                        });
-                    }
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            fontColor: "white",
-                            min: 0, // it is for ignoring negative step.
-                            beginAtZero: true,
-                            callback: function(value, index, values) {
-                                if (Math.floor(value) === value) {
-                                    return value;
-                                }
-                            }
-                        }
-                    }],
-                    xAxes: [{
-                        ticks: {
-                            fontColor: "white",
-                            beginAtZero: true,
-                        }
-                    }]
-                },
-                legend: {
-                    labels: {
-                        fontColor: 'white'
-                    }
-                }
-            }
-        });
-
-        let ctxActives = document.getElementById("chart2");
-        new Chart(ctxActives,
-        {
-            "type":"line",
-            "data":{
-                "labels": days,
-                "datasets":[{
-                    "label":"Cantidad de Activos Por Día",
-                    "data":actives,
+                },{
+                    "label":"Brasil",
+                    "data":confirmedBrasil,
                     "fill":false,
-                    "borderColor":"orange",
+                    "borderColor":"green",
+                    "lineTension":0
+                },{
+                    "label":"Chile",
+                    "data":confirmedChile,
+                    "fill":false,
+                    "borderColor":"white",
+                    "lineTension":0
+                },{
+                    "label":"Ecuador",
+                    "data":confirmedEcuador,
+                    "fill":false,
+                    "borderColor":"purple",
                     "lineTension":0
                 }]
             },
@@ -330,6 +175,7 @@ const loadAllHistoricDataPeru = async () => {
                 }
             }
         });
+        
 
     } catch (error) {
         alert(error.message)
@@ -337,369 +183,7 @@ const loadAllHistoricDataPeru = async () => {
     
 }
 
-loadAllHistoricDataPeru();
-
-const loadAllRegionsData = async () => {
-    const BASE_API = './data/dataByRegion.json'
-    
-    const getData = async (url) => {
-        const response = await fetch(url)
-        const data = await response.json()
-        return data
-        throw new Error('No se encontró ningun resultado');
-    } 
-    
-    try {
-        const resAllDataRegions = await getData(`${BASE_API}`)
-
-        let provinces = [];
-        let confirmed = [];
-
-        let confirmedByAmazonas = 0
-        let confirmedByAncash = 0
-        let confirmedByApurimac = 0
-        let confirmedByArequipa = 0
-        let confirmedByAyacucho = 0
-        let confirmedByCajamarca = 0
-        let confirmedByCallao = 0
-        let confirmedByCusco = 0
-        let confirmedByHuancavelica = 0
-        let confirmedByHuanuco = 0
-        let confirmedByIca = 0
-        let confirmedByJunin = 0
-        let confirmedByLaLibertad = 0
-        let confirmedByLambayeque = 0
-        let confirmedByLima = 0
-        let confirmedByLoreto = 0
-        let confirmedByMadreDeDios = 0
-        let confirmedByMoquegua = 0
-        let confirmedByPasco = 0
-        let confirmedByPiura = 0
-        let confirmedByPuno = 0
-        let confirmedBySanMartin = 0
-        let confirmedByTacna = 0
-        let confirmedByTumbes = 0
-        let confirmedByUcayali = 0
-        
-        for (strNameProvince in resAllDataRegions[0].Provinces)
-        {
-            provinces.push(strNameProvince);
-
-            switch (strNameProvince) {
-                case 'AMAZONAS':          
-                    for (strDate in resAllDataRegions[0].Provinces.AMAZONAS)
-                    {
-                        confirmedByAmazonas = resAllDataRegions[0].Provinces.AMAZONAS[strDate]
-                    }
-                    break;
-                case 'ÁNCASH':          
-                    for (strDate in resAllDataRegions[0].Provinces.ÁNCASH)
-                    {
-                        confirmedByAncash = resAllDataRegions[0].Provinces.ÁNCASH[strDate]
-                    }
-                    break;
-                case 'APURÍMAC':          
-                    for (strDate in resAllDataRegions[0].Provinces.APURÍMAC)
-                    {
-                        confirmedByApurimac = resAllDataRegions[0].Provinces.APURÍMAC[strDate]
-                    }
-                    break;
-                case 'AREQUIPA':          
-                    for (strDate in resAllDataRegions[0].Provinces.AREQUIPA)
-                    {
-                        confirmedByArequipa = resAllDataRegions[0].Provinces.AREQUIPA[strDate]
-                    }
-                    break;
-                case 'AYACUCHO':          
-                    for (strDate in resAllDataRegions[0].Provinces.AYACUCHO)
-                    {
-                        confirmedByAyacucho = resAllDataRegions[0].Provinces.AYACUCHO[strDate]
-                    }
-                    break;
-                case 'CAJAMARCA':          
-                    for (strDate in resAllDataRegions[0].Provinces.CAJAMARCA)
-                    {
-                        confirmedByCajamarca = resAllDataRegions[0].Provinces.CAJAMARCA[strDate]
-                    }
-                    break;
-                case 'CALLAO':          
-                    for (strDate in resAllDataRegions[0].Provinces.CALLAO)
-                    {
-                        confirmedByCallao = resAllDataRegions[0].Provinces.CALLAO[strDate]
-                    }
-                    break;
-                case 'CUSCO':          
-                    for (strDate in resAllDataRegions[0].Provinces.CUSCO)
-                    {
-                        confirmedByCusco = resAllDataRegions[0].Provinces.CUSCO[strDate]
-                    }
-                    break;
-                case 'HUANCAVELICA':          
-                    for (strDate in resAllDataRegions[0].Provinces.HUANCAVELICA)
-                    {
-                        confirmedByHuancavelica = resAllDataRegions[0].Provinces.HUANCAVELICA[strDate]
-                    }
-                    break;
-                case 'HUÁNUCO':          
-                    for (strDate in resAllDataRegions[0].Provinces.HUÁNUCO)
-                    {
-                        confirmedByHuanuco = resAllDataRegions[0].Provinces.HUÁNUCO[strDate]
-                    }
-                    break;
-                case 'ICA':          
-                    for (strDate in resAllDataRegions[0].Provinces.ICA)
-                    {
-                        confirmedByIca = resAllDataRegions[0].Provinces.ICA[strDate]
-                    }
-                    break;
-                case 'JUNÍN':          
-                    for (strDate in resAllDataRegions[0].Provinces.JUNÍN)
-                    {
-                        confirmedByJunin = resAllDataRegions[0].Provinces.JUNÍN[strDate]
-                    }
-                    break;
-                case 'LA_LIBERTAD':          
-                    for (strDate in resAllDataRegions[0].Provinces.LA_LIBERTAD)
-                    {
-                        confirmedByLaLibertad = resAllDataRegions[0].Provinces.LA_LIBERTAD[strDate]
-                    }
-                    break;
-                case 'LAMBAYEQUE':          
-                    for (strDate in resAllDataRegions[0].Provinces.LAMBAYEQUE)
-                    {
-                        confirmedByLambayeque = resAllDataRegions[0].Provinces.LAMBAYEQUE[strDate].Confirmed
-                    }
-                    break;
-                case 'LIMA':          
-                    for (strDate in resAllDataRegions[0].Provinces.LIMA)
-                    {
-                        confirmedByLima = resAllDataRegions[0].Provinces.LIMA[strDate]
-                    }
-                    break;
-                case 'LORETO':          
-                    for (strDate in resAllDataRegions[0].Provinces.LORETO)
-                    {
-                        confirmedByLoreto= resAllDataRegions[0].Provinces.LORETO[strDate]
-                    }
-                    break;
-                case 'MADRE_DE_DIOS':          
-                    for (strDate in resAllDataRegions[0].Provinces.MADRE_DE_DIOS)
-                    {
-                        confirmedByMadreDeDios = resAllDataRegions[0].Provinces.MADRE_DE_DIOS[strDate]
-                    }
-                    break;
-                case 'MOQUEGUA':          
-                    for (strDate in resAllDataRegions[0].Provinces.MOQUEGUA)
-                    {
-                        confirmedByMoquegua = resAllDataRegions[0].Provinces.MOQUEGUA[strDate]
-                    }
-                    break;
-                case 'PASCO':          
-                    for (strDate in resAllDataRegions[0].Provinces.PASCO)
-                    {
-                        confirmedByPasco = resAllDataRegions[0].Provinces.PASCO[strDate]
-                    }
-                    break;
-                case 'PIURA':          
-                    for (strDate in resAllDataRegions[0].Provinces.PIURA)
-                    {
-                        confirmedByPiura = resAllDataRegions[0].Provinces.PIURA[strDate]
-                    }
-                    break;
-                case 'PUNO':          
-                    for (strDate in resAllDataRegions[0].Provinces.PUNO)
-                    {
-                        confirmedByPuno = resAllDataRegions[0].Provinces.PUNO[strDate]
-                    }
-                    break;
-                case 'SAN_MARTÍN':          
-                    for (strDate in resAllDataRegions[0].Provinces.SAN_MARTÍN)
-                    {
-                        confirmedBySanMartin = resAllDataRegions[0].Provinces.SAN_MARTÍN[strDate]
-                    }
-                    break;
-                case 'TACNA':          
-                    for (strDate in resAllDataRegions[0].Provinces.TACNA)
-                    {
-                        confirmedByTacna = resAllDataRegions[0].Provinces.TACNA[strDate]
-                    }
-                    break;
-                case 'TUMBES':          
-                    for (strDate in resAllDataRegions[0].Provinces.TUMBES)
-                    {
-                        confirmedByTumbes = resAllDataRegions[0].Provinces.TUMBES[strDate]
-                    }
-                    break;
-                case 'UCAYALI':          
-                    for (strDate in resAllDataRegions[0].Provinces.UCAYALI)
-                    {
-                        confirmedByUcayali = resAllDataRegions[0].Provinces.UCAYALI[strDate]
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-        
-        confirmed = [
-            confirmedByAmazonas,
-            confirmedByAncash,
-            confirmedByApurimac,
-            confirmedByArequipa,
-            confirmedByAyacucho,
-            confirmedByCajamarca,
-            confirmedByCallao,
-            confirmedByCusco,
-            confirmedByHuancavelica,
-            confirmedByHuanuco,
-            confirmedByIca,
-            confirmedByJunin,
-            confirmedByLaLibertad,
-            confirmedByLambayeque,
-            confirmedByLima,
-            confirmedByLoreto,
-            confirmedByMadreDeDios,
-            confirmedByMoquegua,
-            confirmedByPasco,
-            confirmedByPiura,
-            confirmedByPuno,
-            confirmedBySanMartin,
-            confirmedByTacna,
-            confirmedByTumbes,
-            confirmedByUcayali
-        ]        
-
-        let ctx = document.getElementById("chart3");
-        new Chart(ctx,
-        {
-            "type":"bar",
-            "data":{
-                "labels":provinces,
-                "datasets":[{
-                    "label":"Cantidad de Confirmados Por Regiones",
-                    "data":confirmed,
-                    "fill":false,
-                    "backgroundColor":[
-                        "rgba(236, 94, 105, 0.2)",
-                        "rgba(255, 159, 64, 0.2)",
-                        "rgba(241, 194, 5, 0.2)",
-                        "rgba(99, 203, 137, 0.2)",
-                        "rgba(0, 112, 224, 0.2)",
-                        "rgba(153, 102, 255, 0.2)",
-                        "rgba(201, 203, 207, 0.2)",
-                        "rgba(236, 94, 105, 0.2)",
-                        "rgba(255, 159, 64, 0.2)",
-                        "rgba(241, 194, 5, 0.2)",
-                        "rgba(99, 203, 137, 0.2)",
-                        "rgba(0, 112, 224, 0.2)",
-                        "rgba(153, 102, 255, 0.2)",
-                        "rgba(201, 203, 207, 0.2)",
-                        "rgba(236, 94, 105, 0.2)",
-                        "rgba(255, 159, 64, 0.2)",
-                        "rgba(241, 194, 5, 0.2)",
-                        "rgba(99, 203, 137, 0.2)",
-                        "rgba(0, 112, 224, 0.2)",
-                        "rgba(153, 102, 255, 0.2)",
-                        "rgba(201, 203, 207, 0.2)",
-                        "rgba(236, 94, 105, 0.2)",
-                        "rgba(255, 159, 64, 0.2)",
-                        "rgba(241, 194, 5, 0.2)",
-                        "rgba(99, 203, 137, 0.2)",
-                        "rgba(0, 112, 224, 0.2)",
-                        "rgba(153, 102, 255, 0.2)",
-                        "rgba(201, 203, 207, 0.2)"
-                    ],
-                    "borderColor":[
-                        "rgb(236, 94, 105)",
-                        "rgb(255, 159, 64)",
-                        "rgb(241, 194, 5)",
-                        "rgb(99, 203, 137)",
-                        "rgb(0, 112, 224)",
-                        "rgb(153, 102, 255)",
-                        "rgb(201, 203, 207)",
-                        "rgb(236, 94, 105)",
-                        "rgb(255, 159, 64)",
-                        "rgb(241, 194, 5)",
-                        "rgb(99, 203, 137)",
-                        "rgb(0, 112, 224)",
-                        "rgb(153, 102, 255)",
-                        "rgb(201, 203, 207)",
-                        "rgb(236, 94, 105)",
-                        "rgb(255, 159, 64)",
-                        "rgb(241, 194, 5)",
-                        "rgb(99, 203, 137)",
-                        "rgb(0, 112, 224)",
-                        "rgb(153, 102, 255)",
-                        "rgb(201, 203, 207)",
-                        "rgb(236, 94, 105)",
-                        "rgb(255, 159, 64)",
-                        "rgb(241, 194, 5)",
-                        "rgb(99, 203, 137)",
-                        "rgb(0, 112, 224)",
-                        "rgb(153, 102, 255)",
-                        "rgb(201, 203, 207)"
-                    ],
-                    "borderWidth":1
-                }]
-            },
-            "options":{
-                hover: {
-                    "animationDuration": 0
-                },
-                animation: {
-                    "duration": 1,
-                    "onComplete": function() {
-                        var chartInstance = this.chart,
-                        ctx = chartInstance.ctx;
-                
-                        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
-                        ctx.textAlign = 'center';
-                        ctx.textBaseline = 'bottom';
-                        ctx.fillStyle = "#ffffff";
-                
-                        this.data.datasets.forEach(function(dataset, i) {
-                        var meta = chartInstance.controller.getDatasetMeta(i);
-                        meta.data.forEach(function(bar, index) {
-                            var data = dataset.data[index];
-                            ctx.fillText(data, bar._model.x, bar._model.y - 5);
-                        });
-                        });
-                    }
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            fontColor: "white",
-                            min: 0, // it is for ignoring negative step.
-                            beginAtZero: true,
-                            callback: function(value, index, values) {
-                                if (Math.floor(value) === value) {
-                                    return value;
-                                }
-                            }
-                        }
-                    }],
-                    xAxes: [{
-                        ticks: {
-                            fontColor: "white",
-                            beginAtZero: true,
-                        }
-                    }]
-                },
-                legend: {
-                    labels: {
-                        fontColor: 'white'
-                    }
-                }
-            }
-        });
-
-    } catch (error) {
-        alert(error.message)
-    }
-}
-
-loadAllRegionsData();
+calculateCurveByCountries();
 
 $(document).ready(function() {
     
