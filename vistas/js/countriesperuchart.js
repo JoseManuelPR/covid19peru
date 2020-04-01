@@ -172,6 +172,11 @@ const calculateCurveByCountries = async () => {
                     labels: {
                         fontColor: 'white'
                     }
+                },
+                layout: {
+                    padding: {
+                        right: 15,
+                    }
                 }
             }
         });

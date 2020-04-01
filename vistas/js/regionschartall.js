@@ -298,6 +298,11 @@ const createGraph = (region, days, confirmed) => {
                 labels: {
                     fontColor: 'white'
                 }
+            },
+            layout: {
+                padding: {
+                    right: 15,
+                }
             }
         }
     });

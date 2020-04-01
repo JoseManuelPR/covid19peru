@@ -137,6 +137,11 @@ const calculateCurveProjected = async () => {
                     labels: {
                         fontColor: 'white'
                     }
+                },
+                layout: {
+                    padding: {
+                        right: 15,
+                    }
                 }
             }
         });
@@ -261,6 +266,11 @@ const loadAllHistoricDataPeru = async () => {
                     labels: {
                         fontColor: 'white'
                     }
+                },
+                layout: {
+                    padding: {
+                        right: 15,
+                    }
                 }
             }
         });
@@ -326,6 +336,11 @@ const loadAllHistoricDataPeru = async () => {
                 legend: {
                     labels: {
                         fontColor: 'white'
+                    }
+                },
+                layout: {
+                    padding: {
+                        right: 15,
                     }
                 }
             }
