@@ -8,14 +8,16 @@ const calculateCurveByCountries = async () => {
         throw new Error('No se encontró ningun resultado');
     } 
 
-    const filterByDate = (data) => {
+    const filterByDate = (data) => {                
         let date = data.Date
         let current_datetime = new Date(date)
+        current_datetime.setDate(current_datetime.getDate() + 1);
+
         var initialDate = new Date();
         initialDate.setDate(initialDate.getDate() - 10);
-        // let initialDate = new Date('2020-03-06T00:00:00Z')
+
         if(current_datetime >= initialDate){
-            let formatted_date = (current_datetime.getDate() + 1) + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear()
+            let formatted_date = (current_datetime.getDate()) + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear()
             data.Date = formatted_date
             return data
         }else{
