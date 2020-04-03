@@ -57,6 +57,8 @@ const dataDashboard = async () => {
         document.getElementById("nroActives").textContent = valueActives
         document.getElementById("nroDescarted").textContent = valueDescarted
         document.getElementById("nroProves").textContent = valueProvesRealized
+        document.getElementById("percentRecovered").textContent = `${(valueRecovered/valueConfirmed*100).toFixed(2)} %`
+        document.getElementById("percentDeaths").textContent = `${(valueDeaths/valueConfirmed*100).toFixed(2)} %`
 
         //CONFIRMADOS
         const nroNewsConfirmed = valueConfirmed - valuePreviousConfirmed
