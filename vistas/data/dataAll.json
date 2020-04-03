@@ -212,8 +212,8 @@
         "Country": "Peru",
         "Date": "2020-04-03T00:00:00Z",
         "Confirmed": 1595,
-        "Recovered": 537,
-        "Deaths": 55,
+        "Recovered": 627,
+        "Deaths": 61,
         "Descarted": 15739
     }
 ]
