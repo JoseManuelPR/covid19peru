@@ -17,6 +17,8 @@ const dataDashboard = async () => {
         const valueDeaths = data[data.length-1].Deaths
         const valueDescarted = data[data.length-1].Descarted
         const valueActives = valueConfirmed - valueRecovered - valueDeaths
+        const valueConfirmedMen = data[data.length-1].Men
+        const valueConfirmedWomen = data[data.length-1].Women
 
         const dataFiltered = {  valueConfirmed, 
                                 valueRecovered, 
@@ -27,7 +29,9 @@ const dataDashboard = async () => {
                                 valuePreviousRecovered,
                                 valuePreviousDeaths,
                                 valuePreviousDescarted,
-                                valuePreviousActives
+                                valuePreviousActives,
+                                valueConfirmedMen,
+                                valueConfirmedWomen
                             }
 
         return dataFiltered
@@ -45,7 +49,9 @@ const dataDashboard = async () => {
                     valuePreviousRecovered,
                     valuePreviousDeaths,
                     valuePreviousDescarted,
-                    valuePreviousActives
+                    valuePreviousActives,
+                    valueConfirmedMen,
+                    valueConfirmedWomen
                 } = await getData(`${BASE_API}`)
 
         const valueProvesRealized = valueDescarted + valueConfirmed
@@ -107,6 +113,104 @@ const dataDashboard = async () => {
         if(nroNewsProvesRealized > 0){
             document.getElementById("nroNewsRealized").textContent = `(${nroNewsProvesRealized}) ${porNewsProvesRealized}%`
         }
+
+        var options = {
+            tooltips: {
+            enabled: false
+            },
+            plugins: {
+            datalabels: {
+                formatter: (value, ctx) => {
+                let datasets = ctx.chart.data.datasets;
+                if (datasets.indexOf(ctx.dataset) === datasets.length - 1) {
+                    let sum = datasets[0].data.reduce((a, b) => a + b, 0);
+                    let percentage = Math.round((value / sum) * 100) + '%';
+                    return percentage;
+                } else {
+                    return percentage;
+                }
+                },
+                color: '#fff',
+            }
+            }
+        };
+
+        var options = {
+            tooltips: {
+                enabled: false
+            },
+            legend: {
+                labels: {
+                    fontColor: 'white'
+                }
+            },
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        var dataset = data.datasets[tooltipItem.datasetIndex];
+                        var meta = dataset._meta[Object.keys(dataset._meta)[0]];
+                        var total = meta.total;
+                        var currentValue = dataset.data[tooltipItem.index];
+                        var percentage = parseFloat((currentValue/total*100).toFixed(1));
+                        return currentValue + ` (${percentage}%)`;
+                    },
+                    title: function(tooltipItem, data) {
+                        return data.labels[tooltipItem[0].index];
+                    }
+                }
+            }
+        }
+
+        let ctxSexo = document.getElementById("chartSexo").getContext('2d');
+        new Chart(ctxSexo,
+        {
+            "type": "pie",
+            "data": {
+                "labels": ['Masculino','Femenino'],
+                "datasets": [{
+                    "data": [valueConfirmedMen, valueConfirmedWomen],
+                    "backgroundColor": ["#118DFF","#F20574"],
+                    "borderColor": ["#118DFF","#F20574"],
+                    "hoverBorderColor": ["#fff","#fff"],
+                    "hoverBorderWidth": 0.7
+                }],
+            },
+            "options": options
+        });
+
+        let ctxProves = document.getElementById("chartProves").getContext('2d');
+        new Chart(ctxProves,
+        {
+            "type": "pie",
+            "data": {
+                "labels": ['Positivos','Descartados'],
+                "datasets": [{
+                    "data": [valueConfirmed, valueDescarted],
+                    "backgroundColor": ["#63CB89","#EC5E69"],
+                    "borderColor": ["#63CB89","#EC5E69"],
+                    "hoverBorderColor": ["#fff","#fff"],
+                    "hoverBorderWidth": 0.7
+                }],
+            },
+            "options": options
+        });
+
+        let ctxCases = document.getElementById("chartCases").getContext('2d');
+        new Chart(ctxCases,
+        {
+            "type": "pie",
+            "data": {
+                "labels": ['Activos','Recuperados', 'Muertos'],
+                "datasets": [{
+                    "data": [valueActives, valueRecovered, valueDeaths],
+                    "backgroundColor": ["#EC5E69","#63CB89","#272c32"],
+                    "borderColor": ["#EC5E69","#63CB89","#272c32"],
+                    "hoverBorderColor": ["#fff","#fff", "#fff"],
+                    "hoverBorderWidth": 0.7
+                }],
+            },
+            "options": options
+        });
 
     } catch (error) {
         alert(error.message)
