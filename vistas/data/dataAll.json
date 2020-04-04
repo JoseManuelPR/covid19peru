@@ -221,6 +221,8 @@
         "Confirmed": 1746,
         "Recovered": 914,
         "Deaths": 73,
-        "Descarted": 16095
+        "Descarted": 16095,
+        "Men": 1025,
+        "Women": 721 
     }
 ]
