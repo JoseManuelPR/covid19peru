@@ -599,11 +599,18 @@
                     "AditionalData": "Chiclayo: 8  /  José Leonardo Ortiz: 5  /  La Victoria: 3  /  Pimentel: 1  /  Pueblo Nuevo: 3  /  Ferreñafe: 8  /  Reque: 4  /  Santa Rosa: 1  /  Lambayeque: 1  /  Ciudad Eten: 1 / Monsefú: 2 / IMPORTADOS-> Bagua: 1"
                 },
                 "04-04-2020": {
-                    "Confirmed": 55,
+                    "Confirmed": 64,
                     "Recovered": 6,
                     "Deaths": 9,
                     "Descarted": 330,
                     "AditionalData": "Chiclayo: 11  /  José Leonardo Ortiz: 4  /  La Victoria: 3  /  Pimentel: 1  /  Pueblo Nuevo: 3  /  Ferreñafe: 9  /  Reque: 4  /  Santa Rosa: 1  /  Lambayeque: 1  /  Ciudad Eten: 2 / Monsefú: 4 / Illimo: 1 / IMPORTADOS-> Bagua: 1 / Piura: 1 / POR CONFIRMAR-> 9"
+                },
+                "05-04-2020": {
+                    "Confirmed": 101,
+                    "Recovered": 6,
+                    "Deaths": 9,
+                    "Descarted": 413,
+                    "AditionalData": "Chiclayo: 11  /  José Leonardo Ortiz: 4  /  La Victoria: 3  /  Pimentel: 1  /  Pueblo Nuevo: 3  /  Ferreñafe: 9  /  Reque: 4  /  Santa Rosa: 1  /  Lambayeque: 1  /  Ciudad Eten: 2 / Monsefú: 4 / Illimo: 1 / IMPORTADOS-> Bagua: 1 / Piura: 1 / POR CONFIRMAR UBICACIÓN-> 55"
                 }
             },
             "LIMA": {
