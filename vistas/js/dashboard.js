@@ -668,7 +668,6 @@ async function initMap() {
             zoom: 5,
             center: {lat: -10.1899672, lng: -75.015152},
             mapTypeId: google.maps.MapTypeId.ROADMAP,
-            disableDefaultUI: true,
             styles: [
                 {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
                 {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
