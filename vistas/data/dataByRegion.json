@@ -626,24 +626,24 @@
                 },
                 "04-04-2020": {
                     "Confirmed": 64,
-                    "Recovered": 6,
+                    "Recovered": 3,
                     "Deaths": 9,
                     "Descarted": 330,
                     "AditionalData": "Chiclayo: 11  /  José Leonardo Ortiz: 4  /  La Victoria: 3  /  Pimentel: 1  /  Pueblo Nuevo: 3  /  Ferreñafe: 9  /  Reque: 4  /  Santa Rosa: 1  /  Lambayeque: 1  /  Ciudad Eten: 2 / Monsefú: 4 / Illimo: 1 / IMPORTADOS-> Bagua: 1 / Piura: 1 / POR CONFIRMAR-> 9"
                 },
                 "05-04-2020": {
                     "Confirmed": 101,
-                    "Recovered": 6,
+                    "Recovered": 3,
                     "Deaths": 9,
                     "Descarted": 413,
                     "AditionalData": "Chiclayo: 11  /  José Leonardo Ortiz: 4  /  La Victoria: 3  /  Pimentel: 1  /  Pueblo Nuevo: 3  /  Ferreñafe: 9  /  Reque: 4  /  Santa Rosa: 1  /  Lambayeque: 1  /  Ciudad Eten: 2 / Monsefú: 4 / Illimo: 1 / IMPORTADOS-> Bagua: 1 / Piura: 1 / POR CONFIRMAR UBICACIÓN-> 55"
                 },
                 "06-04-2020": {
-                    "Confirmed": 101,
-                    "Recovered": 6,
-                    "Deaths": 9,
-                    "Descarted": 413,
-                    "AditionalData": "Chiclayo: 11  /  José Leonardo Ortiz: 4  /  La Victoria: 3  /  Pimentel: 1  /  Pueblo Nuevo: 3  /  Ferreñafe: 9  /  Reque: 4  /  Santa Rosa: 1  /  Lambayeque: 1  /  Ciudad Eten: 2 / Monsefú: 4 / Illimo: 1 / IMPORTADOS-> Bagua: 1 / Piura: 1 / POR CONFIRMAR UBICACIÓN-> 55"
+                    "Confirmed": 104,
+                    "Recovered": 4,
+                    "Deaths": 15,
+                    "Descarted": 463,
+                    "AditionalData": "Chiclayo: 24  /  José Leonardo Ortiz: 6  /  La Victoria: 6  /  Pimentel: 2  /  Pueblo Nuevo: 7  /  Ferreñafe: 25  /  Reque: 6  /  Santa Rosa: 1  /  Lambayeque: 9  /  Ciudad Eten: 4 / Monsefú: 7 / Illimo: 1 / Tumán: 1 / Pitipo: 1 / IMPORTADOS-> Bagua: 1 / Piura: 1"
                 }
             },
             "LIMA": {
