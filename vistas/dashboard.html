@@ -29,6 +29,11 @@
                 height: 500px;  /* The height is 400 pixels */
                 width: 100%;  /* The width is the width of the web page */
             }
+
+            #mapZones {
+                height: 500px;  /* The height is 400 pixels */
+                width: 100%;  /* The width is the width of the web page */
+            }
         </style>
     </head>
     <body>
@@ -238,6 +243,17 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="panel panel-white stats-widget">
+                                    <div class="panel-heading clearfix">
+                                        <h4 class="panel-title">Mapa de Riesgo</h4>
+                                        <h4 class="panel-title">Fuente: Aplicación del MINSA (Última Actualización: 03 de Abril)</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div id="mapZones"></div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-lg-4 col-md-4">
                                 <div class="panel panel-white stats-widget">
                                     <div class="panel-body">
@@ -279,7 +295,7 @@
                         <br>
                         <small style="color:#fff"> Toda información corresponde con datos oficiales brindados por el MINSA durante conferencias de prensa y de sus comunicados en redes sociales.</small>
                         <br>
-                        <h6 style="color:#fff"> <b>Última actualización: 05 Abril 2020 2:17 PM</b></h6>
+                        <h6 style="color:#fff"> <b>Última actualización: 06 Abril 2020 1:34 PM</b></h6>
                         <p style="color:#fff"> <b>Desarrollado por: José Manuel Puicón Rodas</b></p>
                         <br>
                     </div> 
@@ -304,7 +320,7 @@
         <script src="../assets/plugins/flot/jquery.flot.pie.min.js"></script>
         <script src="../assets/plugins/chartjs/chart.min.js"></script>
         <script src="../assets/js/space.min.js"></script>
-        
+        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclustererplus@4.0.1.min.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJWziItoEKm9M-k6f-5Gs8a8F30f4ZsO8"></script>          
         <script src="./js/dashboard.js"></script>
 
