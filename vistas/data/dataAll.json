@@ -242,5 +242,14 @@
         "Descarted": 17853,
         "Men": 1493,
         "Women": 1068 
+    },{
+        "Country": "Peru",
+        "Date": "2020-04-07T00:00:00Z",
+        "Confirmed": 2954,
+        "Recovered": 1301,
+        "Deaths": 92,
+        "Descarted": 18601,
+        "Men": 1493,
+        "Women": 1068
     }
 ]
