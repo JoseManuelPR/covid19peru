@@ -247,9 +247,9 @@
         "Date": "2020-04-07T00:00:00Z",
         "Confirmed": 2954,
         "Recovered": 1301,
-        "Deaths": 92,
+        "Deaths": 107,
         "Descarted": 18601,
-        "Men": 1493,
-        "Women": 1068
+        "Men": 1734,
+        "Women": 1220
     }
 ]
