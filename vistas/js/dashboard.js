@@ -435,7 +435,7 @@ const getCities = async () => {
 
         citymap = {
             amazonas: {
-                center: {lat: -4.9825331, lng: -80.1669691},
+                center: {lat: -6.2182059, lng: -78.8567937},
                 population: confirmedByAmazonas,
             },
             ancash: {
