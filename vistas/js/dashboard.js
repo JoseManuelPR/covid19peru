@@ -13,9 +13,11 @@ const dataDashboard = async () => {
         const valuePreviousActives = valuePreviousConfirmed - valuePreviousRecovered - valuePreviousDeaths
 
         const valueConfirmed = data[data.length-1].Confirmed
+        const valueConfirmedFast = data[data.length-1].ConfirmedFast
         const valueRecovered = data[data.length-1].Recovered
         const valueDeaths = data[data.length-1].Deaths
         const valueDescarted = data[data.length-1].Descarted
+        const valueDescartedFast = data[data.length-1].DescartedFast
         const valueActives = valueConfirmed - valueRecovered - valueDeaths
         const valueConfirmedMen = data[data.length-1].Men
         const valueConfirmedWomen = data[data.length-1].Women
@@ -31,7 +33,9 @@ const dataDashboard = async () => {
                                 valuePreviousDescarted,
                                 valuePreviousActives,
                                 valueConfirmedMen,
-                                valueConfirmedWomen
+                                valueConfirmedWomen,
+                                valueConfirmedFast,
+                                valueDescartedFast
                             }
 
         return dataFiltered
@@ -51,17 +55,23 @@ const dataDashboard = async () => {
                     valuePreviousDescarted,
                     valuePreviousActives,
                     valueConfirmedMen,
-                    valueConfirmedWomen
+                    valueConfirmedWomen,
+                    valueConfirmedFast,
+                    valueDescartedFast
                 } = await getData(`${BASE_API}`)
 
         const valueProvesRealized = valueDescarted + valueConfirmed
         const valuePreviousProvesRealized = valuePreviousDescarted + valuePreviousConfirmed
 
         document.getElementById("nroConfirmed").textContent = valueConfirmed
+        document.getElementById("nroConfirmedFast").textContent = valueConfirmedFast
+        document.getElementById("nroPositivesTotal").textContent = valueConfirmed + valueConfirmedFast
         document.getElementById("nroDeaths").textContent = valueDeaths
         document.getElementById("nroRecovered").textContent = valueRecovered
         document.getElementById("nroActives").textContent = valueActives
         document.getElementById("nroDescarted").textContent = valueDescarted
+        document.getElementById("nroDescartedFast").textContent = valueDescartedFast
+        document.getElementById("nroProvesTotal").textContent = valueDescarted + valueDescartedFast
         document.getElementById("nroProves").textContent = valueProvesRealized
         document.getElementById("percentRecovered").textContent = `${(valueRecovered/valueConfirmed*100).toFixed(2)} %`
         document.getElementById("percentDeaths").textContent = `${(valueDeaths/valueConfirmed*100).toFixed(2)} %`
@@ -641,7 +651,7 @@ async function initMap() {
                 fillOpacity: 0.25,
                 map: map,
                 center: citymap[city].center,
-                radius: Math.sqrt(citymap[city].population) * 6000
+                radius: Math.sqrt(citymap[city].population) * 5500
             });
     
             cityCircle.addListener('click', function(ev){
