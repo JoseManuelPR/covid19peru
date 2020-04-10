@@ -651,7 +651,7 @@ async function initMap() {
                 fillOpacity: 0.25,
                 map: map,
                 center: citymap[city].center,
-                radius: Math.sqrt(citymap[city].population) * 4500
+                radius: Math.sqrt(citymap[city].population) * 4000
             });
     
             cityCircle.addListener('click', function(ev){
