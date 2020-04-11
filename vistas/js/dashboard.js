@@ -73,8 +73,8 @@ const dataDashboard = async () => {
         document.getElementById("nroDescartedFast").textContent = valueDescartedFast
         document.getElementById("nroProvesTotal").textContent = valueDescarted + valueDescartedFast
         document.getElementById("nroProves").textContent = valueProvesRealized
-        document.getElementById("percentRecovered").textContent = `${(valueRecovered/valueConfirmed*100).toFixed(2)} %`
-        document.getElementById("percentDeaths").textContent = `${(valueDeaths/valueConfirmed*100).toFixed(2)} %`
+        document.getElementById("percentRecovered").textContent = `${(valueRecovered/(valueConfirmed+valueConfirmedFast)*100).toFixed(2)} %`
+        document.getElementById("percentDeaths").textContent = `${(valueDeaths/(valueConfirmed+valueConfirmedFast)*100).toFixed(2)} %`
 
         //CONFIRMADOS
         const nroNewsConfirmed = valueConfirmed - valuePreviousConfirmed
