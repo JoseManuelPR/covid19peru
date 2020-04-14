@@ -70,7 +70,7 @@ const calculateCurveProjected = async () => {
                 ];
 
         let confirmed = [];
-        const curveExponential = [4,5,7,10,13,18,25,34,47,64,88,120,165,225,308,422,577,790,1080,1478,2022,2820,5100];
+        const curveExponential = [4,5,7,10,13,18,25,34,47,64,88,120,165,225,308,422,577,790,1080,1478,2022,2820,4800];
         const curvePotencial = [1,6,3,3,8,16,28,44,64,88,116,148,184,223,267,314,366,391,421,480,560,649,750,861,984,1117,1260,1410,1567,1728,1890,2051,2209,2361,2505,2640,2765,2879,2981,3073,3154,3226,3288,3342,3388,3428];
         const curveTrending = [1,6,16,20,21,22,26,36,52,77,109,148,191,235,278,317,349,374,391,400,404,406,407,411,420,437,454,478];
         
@@ -141,6 +141,7 @@ const calculateCurveProjected = async () => {
                         ticks: {
                             fontColor: "white",
                             min: 0, // it is for ignoring negative step.
+                            stepSize: 2,
                             beginAtZero: true,
                             callback: function(value, index, values) {
                                 if (Math.floor(value) === value) {
@@ -152,8 +153,7 @@ const calculateCurveProjected = async () => {
                     xAxes: [{
                         ticks: {
                             fontColor: "white",
-                            beginAtZero: true,
-                            stepSize: 2
+                            beginAtZero: true
                         }
                     }]
                 },
