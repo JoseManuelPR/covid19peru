@@ -141,7 +141,6 @@ const calculateCurveProjected = async () => {
                         ticks: {
                             fontColor: "white",
                             min: 0, // it is for ignoring negative step.
-                            stepSize: 2,
                             beginAtZero: true,
                             callback: function(value, index, values) {
                                 if (Math.floor(value) === value) {
@@ -153,7 +152,9 @@ const calculateCurveProjected = async () => {
                     xAxes: [{
                         ticks: {
                             fontColor: "white",
-                            beginAtZero: true
+                            beginAtZero: true,
+                            autoSkip: true,
+                            maxTicksLimit: 15
                         }
                     }]
                 },
