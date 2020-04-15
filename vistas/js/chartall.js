@@ -75,7 +75,7 @@ const calculateCurveProjected = async () => {
         const curveTrending = [1,6,16,20,21,22,26,36,52,77,109,148,191,235,278,317,349,374,391,400,404,406,407,411,420,437,454,478];
         
         for (let i = 0; i < resAllData.length; i++) {
-            confirmed.push(parseInt(resAllData[i].Confirmed));
+            confirmed.push(parseInt(resAllData[i].Confirmed) + parseInt(resAllData[i].ConfirmedFast));
         }
         
         let ctx = document.getElementById("chart4");
@@ -212,10 +212,10 @@ const loadAllHistoricDataPeru = async () => {
         
         for (let i = 0; i < resAllData.length; i++) {
             days.push(getDate(resAllData[i].Date));
-            confirmed.push(parseInt(resAllData[i].Confirmed));
+            confirmed.push(parseInt(resAllData[i].Confirmed) + parseInt(resAllData[i].ConfirmedFast));
             recovered.push(parseInt(resAllData[i].Recovered));
             deaths.push(parseInt(resAllData[i].Deaths));
-            actives.push(parseInt(resAllData[i].Confirmed) - parseInt(resAllData[i].Recovered) - parseInt(resAllData[i].Deaths));
+            actives.push(parseInt(resAllData[i].Confirmed) + parseInt(resAllData[i].ConfirmedFast) - parseInt(resAllData[i].Recovered) - parseInt(resAllData[i].Deaths));
         }
         
         let ctx = document.getElementById("chart1");
