@@ -820,11 +820,11 @@
                 }
                 ,
                 "15-04-2020": {
-                    "Confirmed": 429,
+                    "Confirmed": 532,
                     "Recovered": 6,
-                    "Deaths": 51,
-                    "Descarted": 622,
-                    "AditionalData": "Chiclayo: 302  /  José Leonardo Ortiz: 9  /  La Victoria: 2  /  Pimentel: 7  /  Pueblo Nuevo: 22  /  Ferreñafe: 39  /  Lambayeque: 13  /  Ciudad Eten: 4  /  Monsefú: 10  /  Illimo: 8  /  Tumán: 5  /  Pitipo: 1  /  Motupe: 4  /  Mórrope: 1  /  Olmos: 1  /  Pacora: 1  \n ----------  Hospitalizados: 119 - UCI: 16 - POR CONFIRMAR: 58"
+                    "Deaths": 54,
+                    "Descarted": 759,
+                    "AditionalData": "Chiclayo: 126  /  Ferreñafe: 100  /  José Leonardo Ortiz: 60  /  Monsefú: 55  /  Lambayeque: 43  /  La Victoria: 29  /  Pueblo Nuevo: 26  /  Ciudad Eten: 14  /  Tumán: 12  /  Reque: 11  /  Pimentel: 10  /  Illimo: 7  /  Motupe: 6  /  Santa Rosa: 5  /  San José: 5  /  Mórrope: 5  /  Mochumí: 3  /  Pacora: 3  /  Pomalca: 3  /  Picsi: 3  /  Olmos: 2  /  Jayanca: 1  /  Pitipo: 1  /  Mesones Muro: 1  /  Túcume: 1  \n ----------  Hospitalizados: 119 - UCI: 16 - POR CONFIRMAR: 58"
                 }
             },
             "LIMA": {
