@@ -799,11 +799,11 @@
                     "AditionalData": "Hospitalizados: 119 - UCI: 16 - POR CONFIRMAR: 23"
                 },
                 "14-04-2020": {
-                    "Confirmed": 427,
+                    "Confirmed": 429,
                     "Recovered": 6,
-                    "Deaths": 38,
+                    "Deaths": 51,
                     "Descarted": 622,
-                    "AditionalData": "Hospitalizados: 119 - UCI: 16 - POR CONFIRMAR: 58"
+                    "AditionalData": "Chiclayo: 302  /  José Leonardo Ortiz: 9  /  La Victoria: 2  /  Pimentel: 7  /  Pueblo Nuevo: 22  /  Ferreñafe: 39  /  Lambayeque: 13  /  Ciudad Eten: 4  /  Monsefú: 10  /  Illimo: 8  /  Tumán: 5  /  Pitipo: 1  /  Motupe: 4  /  Mórrope: 1  /  Olmos: 1  /  Pacora: 1  \n Hospitalizados: 119 - UCI: 16 - POR CONFIRMAR: 58"
                 }
             },
             "LIMA": {

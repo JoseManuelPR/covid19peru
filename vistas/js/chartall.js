@@ -154,7 +154,7 @@ const calculateCurveProjected = async () => {
                             fontColor: "white",
                             beginAtZero: true,
                             autoSkip: true,
-                            maxTicksLimit: 30,
+                            maxTicksLimit: 30
                         }
                     }]
                 },
