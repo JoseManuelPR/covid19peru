@@ -7,10 +7,12 @@ const dataDashboard = async () => {
         const data = await response.json()
         
         const valuePreviousConfirmed = data[data.length-2].Confirmed
+        const valuePreviousConfirmedFast = data[data.length-2].ConfirmedFast
         const valuePreviousRecovered = data[data.length-2].Recovered
         const valuePreviousDeaths = data[data.length-2].Deaths
         const valuePreviousDescarted = data[data.length-2].Descarted
-        const valuePreviousActives = valuePreviousConfirmed - valuePreviousRecovered - valuePreviousDeaths
+        const valuePreviousDescartedFast = data[data.length-2].DescartedFast
+        const valuePreviousActives = valuePreviousConfirmed + valuePreviousConfirmedFast - valuePreviousRecovered - valuePreviousDeaths
 
         const valueConfirmed = data[data.length-1].Confirmed
         const valueConfirmedFast = data[data.length-1].ConfirmedFast
@@ -18,24 +20,27 @@ const dataDashboard = async () => {
         const valueDeaths = data[data.length-1].Deaths
         const valueDescarted = data[data.length-1].Descarted
         const valueDescartedFast = data[data.length-1].DescartedFast
-        const valueActives = valueConfirmed - valueRecovered - valueDeaths
+        const valueActives = valueConfirmed + valueConfirmedFast - valueRecovered - valueDeaths
+
         const valueConfirmedMen = data[data.length-1].Men
         const valueConfirmedWomen = data[data.length-1].Women
 
-        const dataFiltered = {  valueConfirmed, 
+        const dataFiltered = {  valueConfirmed,
+                                valueConfirmedFast,
                                 valueRecovered, 
                                 valueDeaths, 
                                 valueActives, 
-                                valueDescarted, 
+                                valueDescarted,
+                                valueDescartedFast,
                                 valuePreviousConfirmed,
+                                valuePreviousConfirmedFast,
                                 valuePreviousRecovered,
                                 valuePreviousDeaths,
                                 valuePreviousDescarted,
+                                valuePreviousDescartedFast,
                                 valuePreviousActives,
                                 valueConfirmedMen,
-                                valueConfirmedWomen,
-                                valueConfirmedFast,
-                                valueDescartedFast
+                                valueConfirmedWomen
                             }
 
         return dataFiltered
@@ -44,24 +49,28 @@ const dataDashboard = async () => {
 
     try {
         const   {     
-                    valueConfirmed, 
+                    valueConfirmed,
+                    valueConfirmedFast,
                     valueRecovered, 
                     valueDeaths, 
                     valueActives, 
-                    valueDescarted, 
+                    valueDescarted,
+                    valueDescartedFast,
                     valuePreviousConfirmed,
+                    valuePreviousConfirmedFast,
                     valuePreviousRecovered,
                     valuePreviousDeaths,
                     valuePreviousDescarted,
+                    valuePreviousDescartedFast,
                     valuePreviousActives,
                     valueConfirmedMen,
-                    valueConfirmedWomen,
-                    valueConfirmedFast,
-                    valueDescartedFast
+                    valueConfirmedWomen
                 } = await getData(`${BASE_API}`)
 
         const valueProvesRealized = valueDescarted + valueConfirmed
+        const valueProvesRealizedFast = valueDescartedFast + valueConfirmedFast
         const valuePreviousProvesRealized = valuePreviousDescarted + valuePreviousConfirmed
+        const valuePreviousProvesRealizedFast = valuePreviousDescartedFast + valuePreviousConfirmedFast
 
         document.getElementById("nroConfirmed").textContent = valueConfirmed
         document.getElementById("nroConfirmedFast").textContent = valueConfirmedFast
@@ -69,20 +78,31 @@ const dataDashboard = async () => {
         document.getElementById("nroDeaths").textContent = valueDeaths
         document.getElementById("nroRecovered").textContent = valueRecovered
         document.getElementById("nroActives").textContent = valueActives
+        document.getElementById("nroProvesTotal").textContent = valueConfirmed + valueConfirmedFast + valueDescarted + valueDescartedFast
         document.getElementById("nroDescarted").textContent = valueDescarted
         document.getElementById("nroDescartedFast").textContent = valueDescartedFast
-        document.getElementById("nroProvesTotal").textContent = valueDescarted + valueDescartedFast
         document.getElementById("nroProves").textContent = valueProvesRealized
+        document.getElementById("nroProvesFast").textContent = valueProvesRealizedFast
         document.getElementById("percentRecovered").textContent = `${(valueRecovered/(valueConfirmed+valueConfirmedFast)*100).toFixed(2)} %`
         document.getElementById("percentDeaths").textContent = `${(valueDeaths/(valueConfirmed+valueConfirmedFast)*100).toFixed(2)} %`
 
         //CONFIRMADOS
         const nroNewsConfirmed = valueConfirmed - valuePreviousConfirmed
+        const nroNewsConfirmedFast = valueConfirmedFast - valuePreviousConfirmedFast
+        const nroNewsConfirmedTotal = valueConfirmed + valueConfirmedFast - valuePreviousConfirmed - valuePreviousConfirmedFast
         const porNewsConfirmed = ((valueConfirmed - valuePreviousConfirmed) / valuePreviousConfirmed * 100).toFixed(1)
+        const porNewsConfirmedFast = ((valueConfirmedFast - valuePreviousConfirmedFast) / valuePreviousConfirmedFast * 100).toFixed(1)
+        const porNewsConfirmedTotal = ((valueConfirmed + valueConfirmedFast - valuePreviousConfirmed - valuePreviousConfirmedFast) / (valuePreviousConfirmed + valuePreviousConfirmedFast) * 100).toFixed(1)
         
         if(nroNewsConfirmed > 0){
             document.getElementById("nroNewsConfirmed").textContent = `(${nroNewsConfirmed}) ${porNewsConfirmed}%`
         }
+
+        if(nroNewsConfirmedFast > 0){
+            document.getElementById("nroNewsConfirmedFast").textContent = `(${nroNewsConfirmedFast}) ${porNewsConfirmedFast}%`
+        }
+
+        document.getElementById("nroNewsConfirmedTotal").textContent = `(${nroNewsConfirmedTotal}) ${porNewsConfirmedTotal}%`
         
         //FALLECIDOS
         const nroNewsDeaths = valueDeaths - valuePreviousDeaths
@@ -110,19 +130,35 @@ const dataDashboard = async () => {
         
         //PRUEBAS DESCARTADAS
         const nroNewsDescarted = valueDescarted - valuePreviousDescarted
+        const nroNewsDescartedFast = valueDescartedFast - valuePreviousDescartedFast
         const porNewsDescarted = ((valueDescarted - valuePreviousDescarted) / valuePreviousDescarted * 100).toFixed(1)
+        const porNewsDescartedFast = ((valueDescartedFast - valuePreviousDescartedFast) / valuePreviousDescartedFast * 100).toFixed(1)
         
         if(nroNewsDescarted > 0){
             document.getElementById("nroNewsDescarted").textContent = `(${nroNewsDescarted}) ${porNewsDescarted}%`
         }
 
+        if(nroNewsDescartedFast > 0){
+            document.getElementById("nroNewsDescartedFast").textContent = `(${nroNewsDescartedFast}) ${porNewsDescartedFast}%`
+        }
+
         //PRUEBAS REALIZADAS
         const nroNewsProvesRealized = valueProvesRealized - valuePreviousProvesRealized
+        const nroNewsProvesRealizedFast = valueProvesRealizedFast - valuePreviousProvesRealizedFast
         const porNewsProvesRealized = ((valueProvesRealized - valuePreviousProvesRealized) / valuePreviousProvesRealized * 100).toFixed(1)
+        const porNewsProvesRealizedFast = ((valueProvesRealizedFast - valuePreviousProvesRealizedFast) / valuePreviousProvesRealizedFast * 100).toFixed(1)
+        const porNewsProvesRealizedTotal = ((valueProvesRealized + valueProvesRealizedFast - valuePreviousProvesRealized - valuePreviousProvesRealizedFast) / (valuePreviousProvesRealized + valuePreviousProvesRealizedFast) * 100).toFixed(1)
         
         if(nroNewsProvesRealized > 0){
             document.getElementById("nroNewsRealized").textContent = `(${nroNewsProvesRealized}) ${porNewsProvesRealized}%`
         }
+
+        if(nroNewsProvesRealizedFast > 0){
+            document.getElementById("nroNewsRealizedFast").textContent = `(${nroNewsProvesRealizedFast}) ${porNewsProvesRealizedFast}%`
+        }
+        
+
+        document.getElementById("nroNewsProvesTotal").textContent = `(${nroNewsProvesRealized + nroNewsProvesRealizedFast}) ${porNewsProvesRealizedTotal}%`
 
         var options = {
             tooltips: {
@@ -195,7 +231,7 @@ const dataDashboard = async () => {
             "data": {
                 "labels": ['Positivos','Descartados'],
                 "datasets": [{
-                    "data": [valueConfirmed, valueDescarted],
+                    "data": [valueConfirmed + valueConfirmedFast, valueDescarted + valueDescartedFast],
                     "backgroundColor": ["#63CB89","#EC5E69"],
                     "borderColor": ["#63CB89","#EC5E69"],
                     "hoverBorderColor": ["#fff","#fff"],
@@ -651,7 +687,7 @@ async function initMap() {
                 fillOpacity: 0.25,
                 map: map,
                 center: citymap[city].center,
-                radius: Math.sqrt(citymap[city].population) * 3000
+                radius: Math.sqrt(citymap[city].population) * 2500
             });
     
             cityCircle.addListener('click', function(ev){
