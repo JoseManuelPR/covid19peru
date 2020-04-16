@@ -70,7 +70,7 @@ const calculateCurveProjected = async () => {
                 ];
 
         let confirmed = [];
-        const curveExponential = [4,5,7,10,13,18,25,34,47,64,88,120,165,225,308,422,577,790,1080,1478,2022,2820,4300,5200,8100,10700];
+        const curveExponential = [4,5,7,10,13,18,25,34,47,64,88,120,165,225,308,422,577,790,1080,1478,2022,2820,4200,5100,8100,10700];
         const curvePotencial = [1,6,3,3,8,16,28,44,64,88,116,148,184,223,267,314,366,391,410,472,569,642,667,845,938,1056,1316,1406,1588,1739,2275,2545,2953,4329,5241,5882,6833,7519,8519,9538,10564,11587,12598,13587,14549,15477];
         
         for (let i = 0; i < resAllData.length; i++) {
@@ -87,7 +87,7 @@ const calculateCurveProjected = async () => {
                     "label":"Curva Actual en Perú",
                     "data":confirmed,
                     "fill":false,
-                    "borderColor":"blue",
+                    "borderColor":"green",
                     "lineTension":0
                 },{
                     "label":"Curva Exponencial (Alta Exposición)",
