@@ -96,8 +96,8 @@ const loadAllHistoricDataLambayeque = async () => {
             }
         });
 
-        let ctx = document.getElementById("chart3");
-        new Chart(ctx,
+        let ctx2 = document.getElementById("chart3");
+        new Chart(ctx2,
         {
             "type":"line",
             "data":{
@@ -167,8 +167,8 @@ const loadAllHistoricDataLambayeque = async () => {
             }
         });
 
-        let ctx = document.getElementById("chart3");
-        new Chart(ctx,
+        let ctx3 = document.getElementById("chart3");
+        new Chart(ctx3,
         {
             "type":"line",
             "data":{
