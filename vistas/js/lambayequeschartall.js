@@ -14,11 +14,15 @@ const loadAllHistoricDataLambayeque = async () => {
 
         let days = [];
         let confirmed = [];
+        let actives = [];
+        let deaths = [];
         
         for (strDate in resAllDataLambayeque[0].Provinces.LAMBAYEQUE)
         {
             days.push(strDate);
             confirmed.push(resAllDataLambayeque[0].Provinces.LAMBAYEQUE[strDate].Confirmed)
+            deaths.push(resAllDataLambayeque[0].Provinces.LAMBAYEQUE[strDate].Deaths)
+            actives.push(resAllDataLambayeque[0].Provinces.LAMBAYEQUE[strDate].Confirmed - resAllDataLambayeque[0].Provinces.LAMBAYEQUE[strDate].Recovered - resAllDataLambayeque[0].Provinces.LAMBAYEQUE[strDate].Deaths)
         }
 
         let ctx = document.getElementById("chart2");
@@ -32,6 +36,148 @@ const loadAllHistoricDataLambayeque = async () => {
                     "data":confirmed,
                     "fill":false,
                     "borderColor":"red",
+                    "lineTension":0
+                }]
+            },
+            "options":{
+                hover: {
+                    "animationDuration": 0
+                },
+                animation: {
+                    "duration": 1,
+                    "onComplete": function() {
+                        var chartInstance = this.chart,
+                        ctx = chartInstance.ctx;
+                
+                        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'bottom';
+                        ctx.fillStyle = "#ffffff";
+                
+                        this.data.datasets.forEach(function(dataset, i) {
+                        var meta = chartInstance.controller.getDatasetMeta(i);
+                        meta.data.forEach(function(bar, index) {
+                            var data = dataset.data[index];
+                            ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                        });
+                        });
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "white",
+                            min: 0, // it is for ignoring negative step.
+                            beginAtZero: true,
+                            callback: function(value, index, values) {
+                                if (Math.floor(value) === value) {
+                                    return value;
+                                }
+                            }
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontColor: "white",
+                            beginAtZero: true,
+                        }
+                    }]
+                },
+                legend: {
+                    labels: {
+                        fontColor: 'white'
+                    }
+                },
+                layout: {
+                    padding: {
+                        right: 15,
+                    }
+                }
+            }
+        });
+
+        let ctx = document.getElementById("chart3");
+        new Chart(ctx,
+        {
+            "type":"line",
+            "data":{
+                "labels": days,
+                "datasets":[{
+                    "label":"Cantidad de Activos Por Día - Lambayeque",
+                    "data":actives,
+                    "fill":false,
+                    "borderColor":"orange",
+                    "lineTension":0
+                }]
+            },
+            "options":{
+                hover: {
+                    "animationDuration": 0
+                },
+                animation: {
+                    "duration": 1,
+                    "onComplete": function() {
+                        var chartInstance = this.chart,
+                        ctx = chartInstance.ctx;
+                
+                        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'bottom';
+                        ctx.fillStyle = "#ffffff";
+                
+                        this.data.datasets.forEach(function(dataset, i) {
+                        var meta = chartInstance.controller.getDatasetMeta(i);
+                        meta.data.forEach(function(bar, index) {
+                            var data = dataset.data[index];
+                            ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                        });
+                        });
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "white",
+                            min: 0, // it is for ignoring negative step.
+                            beginAtZero: true,
+                            callback: function(value, index, values) {
+                                if (Math.floor(value) === value) {
+                                    return value;
+                                }
+                            }
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontColor: "white",
+                            beginAtZero: true,
+                        }
+                    }]
+                },
+                legend: {
+                    labels: {
+                        fontColor: 'white'
+                    }
+                },
+                layout: {
+                    padding: {
+                        right: 15,
+                    }
+                }
+            }
+        });
+
+        let ctx = document.getElementById("chart3");
+        new Chart(ctx,
+        {
+            "type":"line",
+            "data":{
+                "labels": days,
+                "datasets":[{
+                    "label":"Cantidad de Muertos Por Día - Lambayeque",
+                    "data":deaths,
+                    "fill":false,
+                    "borderColor":"gray",
                     "lineTension":0
                 }]
             },
@@ -157,6 +303,9 @@ const dataDashboard = async () => {
         document.getElementById("nroDescarted").textContent = valueDescarted
         document.getElementById("nroProves").textContent = valueProvesRealized
         document.getElementById("aditionalData").textContent = aditionalData
+        
+        document.getElementById("percentDeath").textContent = `${(valueDeaths/valueConfirmed*100).toFixed(2)} %`
+        document.getElementById("percentRecovered").textContent = `${(valueRecovered/valueConfirmed*100).toFixed(2)} %`
 
     } catch (error) {
         alert(error.message)
