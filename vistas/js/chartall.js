@@ -676,7 +676,7 @@ const loadAllRegionsData = async () => {
             confirmedByUcayali
         ]        
 
-        let ctx = document.getElementById("chart3");
+        let ctx = document.getElementById("chart4");
         new Chart(ctx,
         {
             "type":"bar",
