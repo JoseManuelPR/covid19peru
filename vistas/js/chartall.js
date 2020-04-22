@@ -1,4 +1,11 @@
 
+/*
+const filter = v => v % 2
+const filterMax = (fn, c) => x => c && fn(x) && c--, array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]  
+const max = array.length / 2
+const result = array.filter(filterMax(filter, max))
+*/
+
 const calculateCurveProjected = async () => {
 
     const BASE_API = './data/dataAll.json'
