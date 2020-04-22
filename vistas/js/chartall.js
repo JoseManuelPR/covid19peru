@@ -182,9 +182,6 @@ const loadAllHistoricDataPeru = async () => {
     //PERU
     const BASE_API = './data/dataAll.json'
 
-    //BRASIL
-    // const BASE_API = 'https://api.covid19api.com/total/dayone/country/brazil/status/confirmed'
-    
     const getData = async (url) => {
         const response = await fetch(url)
         const data = await response.json()
@@ -310,6 +307,77 @@ const loadAllHistoricDataPeru = async () => {
                     "data":actives,
                     "fill":false,
                     "borderColor":"orange",
+                    "lineTension":0
+                }]
+            },
+            "options":{
+                hover: {
+                    "animationDuration": 0
+                },
+                animation: {
+                    "duration": 1,
+                    "onComplete": function() {
+                        var chartInstance = this.chart,
+                        ctx = chartInstance.ctx;
+                
+                        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'bottom';
+                        ctx.fillStyle = "#ffffff";
+                
+                        this.data.datasets.forEach(function(dataset, i) {
+                        var meta = chartInstance.controller.getDatasetMeta(i);
+                        meta.data.forEach(function(bar, index) {
+                            var data = dataset.data[index];
+                            ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                        });
+                        });
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "white",
+                            min: 0, // it is for ignoring negative step.
+                            beginAtZero: true,
+                            callback: function(value, index, values) {
+                                if (Math.floor(value) === value) {
+                                    return value;
+                                }
+                            }
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontColor: "white",
+                            beginAtZero: true,
+                        }
+                    }]
+                },
+                legend: {
+                    labels: {
+                        fontColor: 'white'
+                    }
+                },
+                layout: {
+                    padding: {
+                        right: 15,
+                    }
+                }
+            }
+        });
+
+        let ctxDeaths = document.getElementById("chart3");
+        new Chart(ctxDeaths,
+        {
+            "type":"line",
+            "data":{
+                "labels": days,
+                "datasets":[{
+                    "label":"Cantidad de Muertes Por Día",
+                    "data":deaths,
+                    "fill":false,
+                    "borderColor":"gray",
                     "lineTension":0
                 }]
             },
