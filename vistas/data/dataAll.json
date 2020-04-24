@@ -460,5 +460,16 @@
         "DescartedFast": 129417,
         "Men": 12820,
         "Women": 8094
+    },{
+        "Country": "Peru",
+        "Date": "2020-04-24T00:00:00Z",
+        "Confirmed": 11432,
+        "ConfirmedFast": 10216,
+        "Recovered": 7496,
+        "Deaths": 634,
+        "Descarted": 36192,
+        "DescartedFast": 140509,
+        "Men": 13508,
+        "Women": 8140
     }
 ]
