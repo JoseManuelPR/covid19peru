@@ -79,7 +79,11 @@ const calculateCurveProjected = async () => {
                     "23-4-2020",
                     "24-4-2020",
                     "25-4-2020",
-                    "26-4-2020"
+                    "26-4-2020",
+                    "27-4-2020",
+                    "28-4-2020",
+                    "29-4-2020",
+                    "30-4-2020"
                 ];
 
         let confirmed = [];
@@ -133,11 +137,14 @@ const calculateCurveProjected = async () => {
                         ctx.fillStyle = "#ffffff";
                 
                         this.data.datasets.forEach(function(dataset, i) {
-                        var meta = chartInstance.controller.getDatasetMeta(i);
-                        meta.data.forEach(function(bar, index) {
-                            var data = dataset.data[index];
-                            ctx.fillText(data, bar._model.x, bar._model.y - 5);
-                        });
+                            var meta = chartInstance.controller.getDatasetMeta(i);
+                            meta.data.forEach(function(bar, index) {
+                                let evaluated = index%2
+                                if(evaluated == 1){
+                                    var data = dataset.data[index];
+                                    ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                                }
+                            });
                         });
                     }
                 },
@@ -262,11 +269,14 @@ const loadAllHistoricDataPeru = async () => {
                         ctx.fillStyle = "#ffffff";
                 
                         this.data.datasets.forEach(function(dataset, i) {
-                        var meta = chartInstance.controller.getDatasetMeta(i);
-                        meta.data.forEach(function(bar, index) {
-                            var data = dataset.data[index];
-                            ctx.fillText(data, bar._model.x, bar._model.y - 5);
-                        });
+                            var meta = chartInstance.controller.getDatasetMeta(i);
+                            meta.data.forEach(function(bar, index) {
+                                let evaluated = index%2
+                                if(evaluated == 1){
+                                    var data = dataset.data[index];
+                                    ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                                }
+                            });
                         });
                     }
                 },
@@ -333,11 +343,14 @@ const loadAllHistoricDataPeru = async () => {
                         ctx.fillStyle = "#ffffff";
                 
                         this.data.datasets.forEach(function(dataset, i) {
-                        var meta = chartInstance.controller.getDatasetMeta(i);
-                        meta.data.forEach(function(bar, index) {
-                            var data = dataset.data[index];
-                            ctx.fillText(data, bar._model.x, bar._model.y - 5);
-                        });
+                            var meta = chartInstance.controller.getDatasetMeta(i);
+                            meta.data.forEach(function(bar, index) {
+                                let evaluated = index%2
+                                if(evaluated == 1){
+                                    var data = dataset.data[index];
+                                    ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                                }
+                            });
                         });
                     }
                 },
@@ -404,11 +417,14 @@ const loadAllHistoricDataPeru = async () => {
                         ctx.fillStyle = "#ffffff";
                 
                         this.data.datasets.forEach(function(dataset, i) {
-                        var meta = chartInstance.controller.getDatasetMeta(i);
-                        meta.data.forEach(function(bar, index) {
-                            var data = dataset.data[index];
-                            ctx.fillText(data, bar._model.x, bar._model.y - 5);
-                        });
+                            var meta = chartInstance.controller.getDatasetMeta(i);
+                            meta.data.forEach(function(bar, index) {
+                                let evaluated = index%2
+                                if(evaluated == 1){
+                                    var data = dataset.data[index];
+                                    ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                                }
+                            });
                         });
                     }
                 },
