@@ -266,11 +266,14 @@ const createGraph = (region, days, confirmed) => {
                     ctx.fillStyle = "#ffffff";
             
                     this.data.datasets.forEach(function(dataset, i) {
-                    var meta = chartInstance.controller.getDatasetMeta(i);
-                    meta.data.forEach(function(bar, index) {
-                        var data = dataset.data[index];
-                        ctx.fillText(data, bar._model.x, bar._model.y - 5);
-                    });
+                        var meta = chartInstance.controller.getDatasetMeta(i);
+                        meta.data.forEach(function(bar, index) {
+                            let evaluated = index%2
+                            if(evaluated == 1){
+                                var data = dataset.data[index];
+                                ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                            }
+                        });
                     });
                 }
             },
