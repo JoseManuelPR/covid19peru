@@ -1486,70 +1486,70 @@
                 },
                 "04-05-2020": {
                     "Confirmed": 2763,
-                    "Recovered": 850,
+                    "Recovered": 450,
                     "Deaths": 294,
                     "Descarted": 2311,
                     "AditionalData": "Reorganizando la cantidad por distritos"
                 },
                 "05-05-2020": {
                     "Confirmed": 3008,
-                    "Recovered": 1450,
+                    "Recovered": 450,
                     "Deaths": 299,
                     "Descarted": 2311,
                     "AditionalData": "Reorganizando la cantidad por distritos"
                 },
                 "06-05-2020": {
                     "Confirmed": 3127,
-                    "Recovered": 2450,
+                    "Recovered": 450,
                     "Deaths": 318,
                     "Descarted": 12511,
                     "AditionalData": "903 Prueba Molecular - 2365 Prueba Rápida"
                 },
                 "07-05-2020": {
                     "Confirmed": 3268,
-                    "Recovered": 3067,
+                    "Recovered": 450,
                     "Deaths": 347,
                     "Descarted": 13098,
                     "AditionalData": "903 Prueba Molecular - 2576 Prueba Rápida"
                 },
                 "08-05-2020": {
                     "Confirmed": 3479,
-                    "Recovered": 3067,
+                    "Recovered": 750,
                     "Deaths": 347,
                     "Descarted": 13098,
                     "AditionalData": "903 Prueba Molecular - 2576 Prueba Rápida"
                 },
                 "09-05-2020": {
                     "Confirmed": 3628,
-                    "Recovered": 3067,
+                    "Recovered": 850,
                     "Deaths": 365,
                     "Descarted": 13712,
                     "AditionalData": "903 Prueba Molecular - 2576 Prueba Rápida"
                 },
                 "10-05-2020": {
                     "Confirmed": 3655,
-                    "Recovered": 3067,
+                    "Recovered": 1050,
                     "Deaths": 376,
                     "Descarted": 14012,
                     "AditionalData": "903 Prueba Molecular - 2752 Prueba Rápida"
                 },
                 "11-05-2020": {
                     "Confirmed": 3748,
-                    "Recovered": 3067,
+                    "Recovered": 1450,
                     "Deaths": 400,
                     "Descarted": 14112,
                     "AditionalData": "923 Prueba Molecular - 2825 Prueba Rápida"
                 },
                 "12-05-2020": {
                     "Confirmed": 3856,
-                    "Recovered": 3067,
+                    "Recovered": 1850,
                     "Deaths": 400,
                     "Descarted": 14112,
                     "AditionalData": "937 Prueba Molecular - 2919 Prueba Rápida"
                 },
                 "13-05-2020": {
                     "Confirmed": 3950,
-                    "Recovered": 3067,
+                    "Recovered": 2450,
                     "Deaths": 417,
                     "Descarted": 14691,
                     "AditionalData": "938 Prueba Molecular - 3012 Prueba Rápida"
