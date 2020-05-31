@@ -856,10 +856,9 @@
         "DescartedFast": 714469,
         "Men": 89861,
         "Women": 58424
-    }
-    ,{
+    },{
         "Country": "Peru",
-        "Date": "2020-05-29T00:00:00Z",
+        "Date": "2020-05-30T00:00:00Z",
         "Confirmed": 37650,
         "ConfirmedFast": 118021,
         "Recovered": 66447,
@@ -868,5 +867,16 @@
         "DescartedFast": 754082,
         "Men": 94337,
         "Women": 61334
+    },{
+        "Country": "Peru",
+        "Date": "2020-05-31T00:00:00Z",
+        "Confirmed": 38673,
+        "ConfirmedFast": 125803,
+        "Recovered": 67208,
+        "Deaths": 4506,
+        "Descarted": 105494,
+        "DescartedFast": 788904,
+        "Men": 99673,
+        "Women": 64803
     }
 ]
