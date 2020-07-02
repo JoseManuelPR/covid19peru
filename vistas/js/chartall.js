@@ -144,7 +144,8 @@ const calculateCurveProjected = async () => {
                     "27-6-2020",
                     "28-6-2020",
                     "29-6-2020",
-                    "30-6-2020"
+                    "30-6-2020",
+                    "01-7-2020"
                 ];
 
         let confirmed = [];
